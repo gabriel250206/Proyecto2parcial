@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 #include "rlutil.h"
+#include "usuarios.h"
 using namespace std;
 using namespace rlutil;
+vector<Usuario> Usuarios;
 void Tittle()
 {
     cout << "titulo : ) \n";
@@ -15,23 +17,16 @@ bool menuk()
 
         hidecursor();
         system("cls");
-        if (mod > 3)
+        if (mod > Usuarios.size())
             mod = 0;
         if (mod < 0)
-            mod = 3;
-
-        if (mod == 0)
-            cout << ">";
-        cout << "opcion 1\n";
-        if (mod == 1)
-            cout << ">";
-        cout << "opcion 2\n";
-        if (mod == 2)
-            cout << ">";
-        cout << "opcion 3\n";
-        if (mod == 3)
-            cout << ">";
-        cout << "Salir\n";
+            mod = Usuarios.size();
+        for (int i = 0; i < Usuarios.size(); i++)
+        {
+            if (mod == i)
+                cout << ">";
+            cout << Usuarios[i].nombre;
+        }
         if (kbhit)
         {
             int k = getkey();
@@ -41,12 +36,6 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
-                if (mod == 0)
-                    return 1;
-                if (mod == 1)
-                    if (mod == 2)
-                        if (mod == 3)
-                            return 0;
             }
         }
     }
