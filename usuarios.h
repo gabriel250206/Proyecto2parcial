@@ -4,6 +4,9 @@
 using namespace std;
 
 class Publicacion;
+
+long contId=00000;
+
 class Usuario{
 private:
     long id;
@@ -14,7 +17,12 @@ public:
     vector<Usuario> amigos;
     vector<Publicacion> publicaciones;
 
-    Usuario::Usuario();
-    Usuario::Usuario(int nombre, int edad, string nacionalidad, long id);
+    Usuario::Usuario(string nombre);
+    Usuario::Usuario(string nombre, int edad);
+    Usuario::Usuario(string nombre, int edad, string nacionalidad);
+
+};
+
+class UsuarioPremium: public Usuario{
 
 };

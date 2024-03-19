@@ -4,16 +4,27 @@
 #include "usuarios.h"
 using namespace std;
 
-Usuario::Usuario(){
+Usuario::Usuario(string nombre){
     this-> nombre="nulo";
     this-> edad=0;
     this-> nacionalidad="wakanda";
-    this->id=00000;
+    this->id=contId;
+  
+    
+}
+Usuario::Usuario(string nombre,int edad){
+    this-> nombre=nombre;
+    this-> edad=edad;
+    this-> nacionalidad="wakanda";
+    this->id=contId;
+    
+   
 }
 
-Usuario::Usuario(int nombre, int edad, string nacionalidad, long id){
+Usuario::Usuario(string nombre, int edad, string nacionalidad){
     this-> nombre=nombre;
     this-> edad=edad;
     this-> nacionalidad=nacionalidad;
-    this->id=id;
+    this->id=contId++;
+    
 }
