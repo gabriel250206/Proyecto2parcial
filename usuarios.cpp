@@ -28,3 +28,5 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
     this->id=contId++;
     
 }
+
+int Usuario:: getId(){return this->id;};
