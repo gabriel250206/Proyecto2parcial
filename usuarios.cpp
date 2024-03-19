@@ -10,3 +10,10 @@ Usuario::Usuario(){
     this-> nacionalidad="wakanda";
     this->id=00000;
 }
+
+Usuario::Usuario(int nombre, int edad, string nacionalidad, long id){
+    this-> nombre=nombre;
+    this-> edad=edad;
+    this-> nacionalidad=nacionalidad;
+    this->id=id;
+}

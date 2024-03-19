@@ -15,6 +15,6 @@ public:
     vector<Publicacion> publicaciones;
 
     Usuario::Usuario();
-    Usuario::Usuario(int nombre, long id);
+    Usuario::Usuario(int nombre, int edad, string nacionalidad, long id);
 
 };
