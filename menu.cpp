@@ -1,20 +1,56 @@
 #include <bits/stdc++.h>
 #include "rlutil.h"
+#include "usuarios.h"
 
 using namespace std;
 using namespace rlutil;
+vector<Usuario> Usuarios;
 class Usuario
 {
 public:
     string nombre;
 };
 
-void data()
+void data(Usuario a )
 {
-    cout << getId;
+    a.mostrar();
+    int mod = 0;
+    while (1)
+    {
+        system("cls");
+        if (mod > 1)
+            mod = 0;
+        if (mod < 0)
+            mod = 1;
+        if (mod == 0)
+            cout << ">";
+        cout << "editar\n";
+        if (mod == 1)
+            cout << ">";
+        cout << "volver\n";
+        if (kbhit)
+        {
+            int k = getkey();
+            if (k == 14)
+                mod--;
+            if (k == 15)
+                mod++;
+            if (k == 1)
+            {
+                if (mod == 0)
+                    editar();
+                if (mod == 1)
+                    return;
+            }
+        }
+    }
+
+
+
 }
 void publ(){};
-void ami(){};
+void ami(){
+
 void opciones()
 {
     int mod = 0;
@@ -62,24 +98,11 @@ void opciones()
 void Tittle()
 {
     cout << "titulo : ) \n";
-    return;
-}
-bool menuk()
-{
-    int mod = 0;
-    while (1)
-    {
-
-        hidecursor();
-        system("cls");
-        if (mod > Usuarios.size())
-            mod = 0;
-        if (mod < 0)
-            mod = Usuarios.size();
-        for (int i = 0; i < Usuarios.size(); i++)
+@@ -25,8 +80,11 @@ bool menuk()
         {
             if (mod == i)
                 cout << ">";
+            cout << Usuarios[i].nombre;
             cout << Usuarios[i].nombre << '\n';
         }
         if (mod == Usuarios.size())
@@ -88,9 +111,7 @@ bool menuk()
         if (kbhit)
         {
             int k = getkey();
-            if (k == 14)
-                mod--;
-            if (k == 15)
+@@ -36,6 +94,10 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
@@ -102,7 +123,6 @@ bool menuk()
         }
     }
 }
-
 int main()
 {
     hidecursor();
@@ -111,9 +131,7 @@ int main()
     Tittle();
     cout << "Presiona cualquier tecla para iniciar \n";
     anykey();
-
     if (!menuk())
         return 0;
-
     return 0;
 }
