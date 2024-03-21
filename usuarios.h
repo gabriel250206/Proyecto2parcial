@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "publicaciones.h"
 using namespace std;
-
-class Publicacion{
-    
-};
 
 long contId=00000;
 
@@ -18,7 +15,7 @@ public:
     string nacionalidad;
     vector<Usuario*> amigos;
     //map<id, usuario*> amigos;
-    vector<Publicacion> publicaciones;
+    vector<Publicacion*> publicaciones;
 
     Usuario::Usuario(string nombre);
     Usuario::Usuario(string nombre, int edad);

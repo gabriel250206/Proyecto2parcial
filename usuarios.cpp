@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include<map>
+#include "publicaciones.h"
+
+//#include<map>
 #include "usuarios.h"
 using namespace std;
 
@@ -32,7 +34,7 @@ void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->e
 
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicaciones.size();i++){
-        // aqui van las publicaciones
+        publicaciones[i]->mostrarPublicacion();
     }
 }
 void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
