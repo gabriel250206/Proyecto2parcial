@@ -26,14 +26,15 @@ public:
     void mostrar();
     void mostrarPublicaciones();
     virtual void agregarAmigo(Usuario* nuevoAmigo);
-    virtual void crearPublicacion(Publicacion* nueva);
+    virtual void crearPublicacion();
     Usuario* getAmigo(int id);
 
 
 };
 
 class UsuarioPremium: public Usuario{
-    void crearPublicacion(Publicacion*nueva);
+    void crearPublicacion();
+    vector <PublicacionPremium*> publicacion;
 };
 
 

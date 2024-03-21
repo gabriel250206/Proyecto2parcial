@@ -2,6 +2,7 @@
 
 #include "usuarios.h"
 
+long idp=00000;
 
 class Publicacion{
     private:
@@ -12,14 +13,17 @@ class Publicacion{
         Usuario* usuario;
 
         virtual void mostrarPublicacion();
-
+        Publicacion();
         Publicacion(Usuario* usuario, string fecha, string contenido);
 };
 
 class PublicacionPremium: public Publicacion{
     public:
-    vector<string*>etiquetas;
+    vector<Usuario*>etiquetas;
     void mostrarPublicacion();
+
+
+    PublicacionPremium(Usuario* usuario, string fecha, string contenido, vector<UsuarioPremium*>etiquetas);
 
 
 };

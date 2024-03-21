@@ -56,10 +56,28 @@ Usuario* Usuario::getAmigo(int id){
 //     nuevoAmigo->amigos[this->id]=this;
 // }
 
- void Usuario:: crearPublicacion(Publicacion* nueva){
+ void Usuario:: crearPublicacion(){
+    Publicacion* nueva;
+    cout<<"escribe la fecha y el contenido"<<endl;
+    cin>>nueva->fecha>>nueva->contenido;
+    nueva->usuario=this;
     publicaciones.push_back(nueva);
 }
 
-void UsuarioPremium:: crearPublicacion(Publicacion* nueva){
-    
+void UsuarioPremium:: crearPublicacion(){
+    PublicacionPremium* nueva;
+    cout<<"escribe la fecha y el contenido"<<endl;
+    cin>>nueva->fecha>>nueva->contenido;
+    nueva->usuario=this;
+    cout<<"cuantos amigos seran?"<<endl;
+    int x;
+    cin>>x;
+    for(int i=0;i<x;i++){
+        int ide;
+        cout<<"inserta su id"<<endl;
+        cin>>ide;
+        nueva->etiquetas.push_back(getAmigo(ide));
+
+    }
+    this->publicacion.push_back(nueva);
 }
