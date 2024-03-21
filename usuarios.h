@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "publicaciones.h"
+#pragma once "publicaciones.h"
 using namespace std;
 
 long contId=00000;
@@ -25,14 +25,20 @@ public:
     int getId();
     void mostrar();
     void mostrarPublicaciones();
-    void agregarAmigo(Usuario* nuevoAmigo);
-    void crearPublicacion();
+    virtual void agregarAmigo(Usuario* nuevoAmigo);
+    virtual void crearPublicacion(Publicacion* nueva);
     Usuario* getAmigo(int id);
 
 
 };
 
 class UsuarioPremium: public Usuario{
-
+    void crearPublicacion(Publicacion*nueva);
 };
+
+
+
+
+
+
 

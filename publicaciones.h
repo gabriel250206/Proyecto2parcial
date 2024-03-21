@@ -11,7 +11,15 @@ class Publicacion{
         string contenido;
         Usuario* usuario;
 
-        void mostrarPublicacion();
+        virtual void mostrarPublicacion();
 
         Publicacion(Usuario* usuario, string fecha, string contenido);
+};
+
+class PublicacionPremium: public Publicacion{
+    public:
+    vector<string*>etiquetas;
+    void mostrarPublicacion();
+
+
 };

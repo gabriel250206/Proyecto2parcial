@@ -55,3 +55,11 @@ Usuario* Usuario::getAmigo(int id){
 //     amigos[nuevoAmigo->id] =nuevoAmigo;
 //     nuevoAmigo->amigos[this->id]=this;
 // }
+
+ void Usuario:: crearPublicacion(Publicacion* nueva){
+    publicaciones.push_back(nueva);
+}
+
+void UsuarioPremium:: crearPublicacion(Publicacion* nueva){
+    
+}
