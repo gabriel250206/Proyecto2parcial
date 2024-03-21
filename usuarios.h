@@ -16,7 +16,8 @@ public:
     string nombre;
     int edad;
     string nacionalidad;
-    vector<Usuario> amigos;
+    vector<Usuario*> amigos;
+    //map<id, usuario*> amigos;
     vector<Publicacion> publicaciones;
 
     Usuario::Usuario(string nombre);
@@ -27,7 +28,7 @@ public:
     int getId();
     void mostrar();
     void mostrarPublicaciones();
-    void agregarAmigos(Usuario* nuevoAmigo);
+    void agregarAmigo(Usuario* nuevoAmigo);
     void crearPublicacion();
     Usuario* getAmigo(int id);
 
