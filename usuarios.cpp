@@ -30,7 +30,7 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
 
 int Usuario:: getId(){return this->id;};
 
-void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id;}
+void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicaciones.size();i++){

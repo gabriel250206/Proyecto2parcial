@@ -15,10 +15,12 @@ class RedSocial{
         int numeroDeUsuarios;
         int numeroDePublicaciones;
 
-        void agregarUsuario();
+        void agregarUsuario(Usuario* nuevo);
         void mostrarUsuarios();
         void mostrarPublicaciones();
         Usuario* getUsuario(int id);
+
+
 
 
 
