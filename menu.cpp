@@ -4,12 +4,6 @@
 
 using namespace std;
 using namespace rlutil;
-vector<Usuario> Usuarios;
-class Usuario
-{
-public:
-    string nombre;
-};
 
 void data(Usuario a )
 {
@@ -48,8 +42,8 @@ void data(Usuario a )
 
 
 }
-void publ(){};
-void ami(){
+void publ(){}
+void ami(){}
 
 void opciones()
 {
@@ -83,7 +77,7 @@ void opciones()
             if (k == 1)
             {
                 if (mod == 0)
-                    data();
+                    data(a);
                 if (mod == 1)
                     publ();
                 if (mod == 2)
@@ -98,7 +92,20 @@ void opciones()
 void Tittle()
 {
     cout << "titulo : ) \n";
-@@ -25,8 +80,11 @@ bool menuk()
+    return;
+}
+bool menuk()
+{
+    int mod = 0;
+    while (1)
+    {
+        hidecursor();
+        system("cls");
+        if (mod > Usuarios.size())
+            mod = 0;
+        if (mod < 0)
+            mod = Usuarios.size();
+        for (int i = 0; i < Usuarios.size(); i++)
         {
             if (mod == i)
                 cout << ">";
@@ -111,14 +118,16 @@ void Tittle()
         if (kbhit)
         {
             int k = getkey();
-@@ -36,6 +94,10 @@ bool menuk()
+            if (k == 14)
+                mod--;
+            if (k == 15)
                 mod++;
             if (k == 1)
             {
                 if (mod == Usuarios.size())
                     return 0;
-                Usuario a = &Usuarios[mod];
-                else opciones();
+                Usuario a = Usuarios[mod];
+                else opciones(a);
             }
         }
     }
@@ -133,5 +142,5 @@ int main()
     anykey();
     if (!menuk())
         return 0;
-    return 0;
+    
 }
