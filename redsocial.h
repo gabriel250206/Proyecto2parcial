@@ -13,7 +13,7 @@ class RedSocial{
     public:
         string nombre;
         int numeroDeUsuarios;
-        int numeroDePublicaciones;
+        int numeroDePublicaciones; /// se modifica en interfaz
 
         void agregarUsuario(Usuario* nuevo);
         void mostrarUsuarios();
