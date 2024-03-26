@@ -130,7 +130,7 @@ bool menuk()
                 if (mod == usuarios.size())return 0;
                 else{
                 a = usuarios[mod];
-                opciones(a);
+                opciones();
                 }
             }
         }
