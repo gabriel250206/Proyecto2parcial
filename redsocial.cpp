@@ -23,6 +23,6 @@ Usuario* RedSocial:: getUsuario(int id){
     }
     return nullptr;
 }
-Usuario* getUsuariopos(int pos){
+Usuario* RedSocial:: getUsuariopos(int pos){
     return usuarios[pos];
 }
