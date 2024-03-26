@@ -113,7 +113,7 @@ bool menuk()
         {
             if (mod == i)
                 cout << ">";
-            cout << P.getUsuario(i)->nombre<< '\n';
+            cout << P.getUsuariopos(i)->nombre<< '\n';
         }
         if (mod == P.numeroDeUsuarios)
             cout << ">";
@@ -125,11 +125,11 @@ bool menuk()
                 mod--;
             if (k == 15)
                 mod++;
-            if (k == 1)s
+            if (k == 1)
             {
                 if (mod == P.numeroDeUsuarios)return 0;
                 else{
-                a = P.getUsuario(mod);
+                a = P.getUsuariopos(mod);
                 opciones();
                 }
             }
