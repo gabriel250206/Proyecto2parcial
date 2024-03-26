@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 #include "rlutil.h"
 #include "usuarios.h"
+#include "publicaciones.h"
+#include "redsocial.h"
 
 using namespace std;
 using namespace rlutil;
-
-void data(Usuario a )
+Usuario a;
+void editar(){}
+void data()
 {
     a.mostrar();
     int mod = 0;
@@ -101,18 +104,18 @@ bool menuk()
     {
         hidecursor();
         system("cls");
-        if (mod > Usuarios.size())
+        if (mod > usuarios.size())
             mod = 0;
         if (mod < 0)
-            mod = Usuarios.size();
-        for (int i = 0; i < Usuarios.size(); i++)
+            mod = usuarios.size();
+        for (int i = 0; i < usuarios.size(); i++)
         {
             if (mod == i)
                 cout << ">";
-            cout << Usuarios[i].nombre;
-            cout << Usuarios[i].nombre << '\n';
+            cout << usuarios[i].nombre;
+            cout << usuarios[i].nombre << '\n';
         }
-        if (mod == Usuarios.size())
+        if (mod == usuarios.size())
             cout << ">";
         cout << "Salir";
         if (kbhit)
@@ -124,10 +127,11 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
-                if (mod == Usuarios.size())
-                    return 0;
-                Usuario a = Usuarios[mod];
-                else opciones(a);
+                if (mod == usuarios.size())return 0;
+                else{
+                a = usuarios[mod];
+                opciones(a);
+                }
             }
         }
     }
