@@ -2,6 +2,7 @@
 
 void RedSocial::agregarUsuario(Usuario* nuevo){
     usuarios.push_back(nuevo);
+    this->numeroDeUsuarios++;
 }
 void RedSocial::mostrarUsuarios(){
     for(int i=0;i<usuarios.size();i++)
