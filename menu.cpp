@@ -6,11 +6,12 @@
 
 using namespace std;
 using namespace rlutil;
-Usuario a;
+RedSocial P;
+Usuario *a;
 void editar(){}
 void data()
 {
-    a.mostrar();
+    a->mostrar();
     int mod = 0;
     while (1)
     {
@@ -80,7 +81,7 @@ void opciones()
             if (k == 1)
             {
                 if (mod == 0)
-                    data(a);
+                    data();
                 if (mod == 1)
                     publ();
                 if (mod == 2)
@@ -104,18 +105,17 @@ bool menuk()
     {
         hidecursor();
         system("cls");
-        if (mod > usuarios.size())
+        if (mod > P.numeroDeUsuarios)
             mod = 0;
         if (mod < 0)
-            mod = usuarios.size();
-        for (int i = 0; i < usuarios.size(); i++)
+            mod = P.numeroDeUsuarios;
+        for (int i = 0; i < P.numeroDeUsuarios; i++)
         {
             if (mod == i)
                 cout << ">";
-            cout << usuarios[i].nombre;
-            cout << usuarios[i].nombre << '\n';
+            cout << P.getUsuario(i)->nombre<< '\n';
         }
-        if (mod == usuarios.size())
+        if (mod == P.numeroDeUsuarios)
             cout << ">";
         cout << "Salir";
         if (kbhit)
@@ -125,11 +125,11 @@ bool menuk()
                 mod--;
             if (k == 15)
                 mod++;
-            if (k == 1)
+            if (k == 1)s
             {
-                if (mod == usuarios.size())return 0;
+                if (mod == P.numeroDeUsuarios)return 0;
                 else{
-                a = usuarios[mod];
+                a = P.getUsuario(mod);
                 opciones();
                 }
             }
@@ -137,7 +137,11 @@ bool menuk()
     }
 }
 int main()
-{
+{   
+    Usuario Alberto("Alberto" , 16 , "mexicano");
+    Usuario Gabriel("Gabriel" , 18 , "mexicano");
+    P.agregarUsuario(&Alberto);
+    P.agregarUsuario(&Gabriel);
     hidecursor();
     setColor(89);
     setColor(BLACK);
