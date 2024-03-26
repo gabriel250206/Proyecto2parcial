@@ -33,8 +33,8 @@ int Usuario:: getId(){return this->id;};
 void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
-    for(int i=0;i<this->publicaciones.size();i++){
-        publicaciones[i]->mostrarPublicacion();
+    for(int i=0;i<this->publicacioness.size();i++){
+        publicacioness[i]->mostrarPublicacion();
     }
 }
 void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
@@ -61,7 +61,7 @@ Usuario* Usuario::getAmigo(int id){
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;
     nueva->usuario=this;
-    publicaciones.push_back(nueva);
+    publicacioness.push_back(nueva);
 }
 
 void UsuarioPremium:: crearPublicacion(){

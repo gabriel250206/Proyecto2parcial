@@ -1,20 +1,20 @@
 #include "usuarios.h"
 #include "publicaciones.h"
-
+#include <vector>
 using namespace std;
 
 class RedSocial{
 
     private:
-        vector<Usuario*> usuarios;
+        vector<Usuario*> usuarioss;
         vector<UsuarioPremium*> usuarioPremium;
-        vector<Publicacion*>publicaciones;
+        vector<vector<Publicacion*>> publicacioness;
         vector<PublicacionPremium*>publicacionesPremium;
     public:
         string nombre;
-        int numeroDeUsuarios;
-        int numeroDePublicaciones; /// se modifica en interfaz
-
+        int numeroDeUsuarios=0;
+        int numeroDePublicaciones=0; /// se modifica en interfaz
+        void eliminarUsuario(int pos);
         void agregarUsuario(Usuario* nuevo);
         void mostrarUsuarios();
         void mostrarPublicaciones();

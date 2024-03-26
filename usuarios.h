@@ -1,25 +1,27 @@
-#include <iostream>
+
+#ifndef usuarios.h
+#define usuarios.h
 #include <string>
 #include <vector>
-#pragma once "publicaciones.h"
+#include "publicaciones.h"
 using namespace std;
 
-long contId=00000;
+int contId=00000;
 
 class Usuario{
 private:
-    long id;
+    int id;
 public:
     string nombre;
     int edad;
     string nacionalidad;
     vector<Usuario*> amigos;
     //map<id, usuario*> amigos;
-    vector<Publicacion*> publicaciones;
+    vector<Publicacion*> publicacioness;
 
-    Usuario::Usuario(string nombre);
-    Usuario::Usuario(string nombre, int edad);
-    Usuario::Usuario(string nombre, int edad, string nacionalidad);
+    Usuario(string nombre);
+    Usuario(string nombre, int edad);
+    Usuario(string nombre, int edad, string nacionalidad);
 
 
     int getId();
@@ -33,11 +35,12 @@ public:
 };
 
 class UsuarioPremium: public Usuario{
+    public:
     void crearPublicacion();
     vector <PublicacionPremium*> publicacion;
 };
 
-
+#endif // usuarios
 
 
 
