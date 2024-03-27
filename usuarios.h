@@ -1,12 +1,14 @@
 
-#ifndef usuarios.h
-#define usuarios.h
+#ifndef USUARIOS_H
+#define USUARIOS_H
 #include <string>
 #include <vector>
 #include "publicaciones.h"
 using namespace std;
 
 int contId=00000;
+class Publicacion;
+class PublicacionPremium;
 
 class Usuario{
 private:
@@ -40,7 +42,7 @@ class UsuarioPremium: public Usuario{
     vector <PublicacionPremium*> publicacion;
 };
 
-#endif // usuarios
+#endif // USUARIOS_H
 
 
 

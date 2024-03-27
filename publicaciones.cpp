@@ -1,11 +1,10 @@
 #include "publicaciones.h"
-#include "usuarios.h"
 #include <iostream> 
 using namespace std;
 void Publicacion:: mostrarPublicacion(){cout<<"fecha: "<<this->fecha<<endl<<" contenido: "<<this->contenido<<endl<<"usuario: "<<this->usuario->nombre;}
 
-Publicacion::Publicacion(Usuario* usuario){
-    this->usuario=usuario;
+Publicacion::Publicacion(){
+    this->usuario=nullptr;
     this->fecha="NA";
     this->contenido="NA";
     this->id=idp++;

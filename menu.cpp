@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 #include "rlutil.h"
-#include "usuarios.h"
-#include "publicaciones.h"
 #include "redsocial.h"
 
 using namespace std;

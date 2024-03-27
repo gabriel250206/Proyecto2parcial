@@ -1,9 +1,9 @@
 
-#ifndef publicaciones.h
-#define publicaciones.h
-#include "usuarios.h"
+#ifndef PUBLICACIONES_H
+#define PUBLICACIONES_H
 #include <string>
 #include <vector>
+#include "usuarios.h"
 using namespace std ;
 int idp=00000;
 
@@ -16,7 +16,7 @@ class Publicacion{
         Usuario* usuario;
 
         void mostrarPublicacion();
-        Publicacion(Usuario *usuario);
+        Publicacion();
         Publicacion(Usuario *usuario, string fecha, string contenido);
 };
 
@@ -27,4 +27,4 @@ class PublicacionPremium: public Publicacion{
     PublicacionPremium(Usuario* usuario, string fecha, string contenido, vector<UsuarioPremium*>etiquetas);
     
 };
-#endif // publicaciones
+#endif // PUBLICACIONES_H

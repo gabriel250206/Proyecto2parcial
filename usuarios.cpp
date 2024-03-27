@@ -1,12 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "publicaciones.h"
-
-//#include<map>
 #include "usuarios.h"
 using namespace std;
-
+class Publicacion;
+class PublicacionPremium;
 Usuario::Usuario(string nombre){
     this-> nombre="nulo";
     this-> edad=0;
