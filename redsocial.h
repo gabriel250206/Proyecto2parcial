@@ -2,7 +2,10 @@
 #include "usuarios.h"
 #include <vector>
 using namespace std;
-
+class Publicacion;
+class PublicacionPremium;
+class Usuario;
+class UsuarioPremium;
 class RedSocial{
 
     private:

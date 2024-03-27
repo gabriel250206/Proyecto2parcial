@@ -1,6 +1,12 @@
 #include "redsocial.h"
+#include "publicaciones.h"
+#include "usuarios.h"
 #include <iostream>
 using namespace std;
+class Publicacion;
+class PublicacionPremium;
+class Usuario;
+class UsuarioPremium;
 void RedSocial::agregarUsuario(Usuario* nuevo){
     usuarioss.push_back(nuevo);
     this->numeroDeUsuarios++;

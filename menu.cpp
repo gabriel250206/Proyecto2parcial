@@ -1,9 +1,15 @@
 #include <bits/stdc++.h>
 #include "rlutil.h"
 #include "redsocial.h"
-
+#include "publicaciones.h"
+#include "usuarios.h"
 using namespace std;
 using namespace rlutil;
+class Publicacion;
+class PublicacionPremium;
+class Usuario;
+class UsuarioPremium;
+class RedSocial;
 RedSocial P;
 Usuario *a;
 void editar(){}
@@ -44,8 +50,15 @@ void data()
 
 
 }
-void publ(){}
-void ami(){}
+void publ(){
+    system("cls");
+    for ( Publicacion * f : a-> publicacioness) {a->mostrarPublicaciones();
+    cout <<'\n';}
+}
+void ami(){
+    system("cls");
+    for ( Usuario * f : a-> amigos)cout << f->nombre<<'\n';
+}
 
 void opciones()
 {
