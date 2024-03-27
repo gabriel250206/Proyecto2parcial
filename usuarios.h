@@ -3,10 +3,9 @@
 #define USUARIOS_H
 #include <string>
 #include <vector>
-#include "publicaciones.h"
 using namespace std;
 
-int contId=00000;
+static int contId=00000;
 class Publicacion;
 class PublicacionPremium;
 

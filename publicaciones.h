@@ -5,7 +5,7 @@
 #include <vector>
 #include "usuarios.h"
 using namespace std ;
-int idp=00000;
+static int idp=00000;
 
 class Publicacion{
     private:
@@ -13,11 +13,11 @@ class Publicacion{
     public:
         string fecha;
         string contenido;
-        Usuario* usuario;
+        Usuario* usuario=nullptr;
 
         void mostrarPublicacion();
         Publicacion();
-        Publicacion(Usuario *usuario, string fecha, string contenido);
+        Publicacion(Usuario* usuario, string fecha, string contenido);
 };
 
 class PublicacionPremium: public Publicacion{

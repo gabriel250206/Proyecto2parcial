@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include "usuarios.h"
+#include "publicaciones.h"
+
 using namespace std;
 class Publicacion;
 class PublicacionPremium;
