@@ -12,7 +12,7 @@ class PublicacionPremium;
 class Usuario;
 class UsuarioPremium;
 class RedSocial;
-RedSocial P;
+RedSocial P{"instagram"};
 Usuario *a;
 void editar(){}
 void data()

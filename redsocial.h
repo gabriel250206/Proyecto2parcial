@@ -24,5 +24,17 @@ class RedSocial{
         Usuario* getUsuario(int id);
         Usuario* getUsuariopos(int pos);
 
+        RedSocial(string nombre){
+            this->nombre=nombre;
+        }
+        RedSocial(string nombre,vector<Usuario*>usuarios){
+            this->nombre=nombre;
+            this->usuarioss=usuarios;
+        }
+        RedSocial(string nombre,vector<Usuario*>usuarios,vector<vector<Publicacion*>>publicaciones){
+            this->nombre=nombre;
+            this->usuarioss=usuarios;
+            this->publicacioness=publicaciones;
+        }
 
 };
