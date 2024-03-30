@@ -37,3 +37,17 @@ Usuario* RedSocial:: getUsuario(int id){
 Usuario* RedSocial:: getUsuariopos(int pos){
     return usuarioss[pos];
 }
+
+
+RedSocial::RedSocial(std::string nombre){
+    this->nombre=nombre;
+}
+RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios){
+    this->nombre=nombre;
+    this->usuarioss=usuarios;
+}
+RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios,vector<vector<Publicacion*>>publicaciones){
+    this->nombre=nombre;
+    this->usuarioss=usuarios;
+    this->publicacioness=publicaciones;
+}

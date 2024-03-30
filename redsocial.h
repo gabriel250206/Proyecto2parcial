@@ -24,6 +24,9 @@ class RedSocial{
         Usuario* getUsuario(int id);
         Usuario* getUsuariopos(int pos);
 
+RedSocial(std::string nombre);
+        RedSocial(std::string nombre,vector<Usuario*>usuarios);
+        RedSocial(std::string nombre,vector<Usuario*>usuarios,vector<vector<Publicacion*>>publicaciones);
 
 
 
