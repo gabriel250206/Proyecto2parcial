@@ -5,8 +5,7 @@
 #include "publicaciones.h"
 
 using namespace std;
-class Publicacion;
-class PublicacionPremium;
+
 Usuario::Usuario(string nombre){
     this-> nombre="nulo";
     this-> edad=0;
@@ -28,16 +27,18 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
     
 }
 
-int Usuario:: getId(){return this->id;};
+int Usuario::getId(){
+    return this->id;
+}
 
-void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<endl;}
+void Usuario::mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<endl;}
 
-void Usuario:: mostrarPublicaciones(){
+void Usuario::mostrarPublicaciones(){
     for(int i=0;i<this->publicacioness.size();i++){
         publicacioness[i]->mostrarPublicacion();
     }
 }
-void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
+void Usuario::agregarAmigo(Usuario* nuevoAmigo){
     amigos.push_back(nuevoAmigo);
     nuevoAmigo->amigos.push_back(this);
 }
@@ -56,7 +57,7 @@ Usuario* Usuario::getAmigo(int id){
 //     nuevoAmigo->amigos[this->id]=this;
 // }
 
- void Usuario:: crearPublicacion(){
+ void Usuario::crearPublicacion(){
     Publicacion* nueva;
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;
@@ -64,7 +65,7 @@ Usuario* Usuario::getAmigo(int id){
     publicacioness.push_back(nueva);
 }
 
-void UsuarioPremium:: crearPublicacion(){
+void UsuarioPremium::crearPublicacion(){
     PublicacionPremium* nueva;
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;

@@ -25,6 +25,4 @@ class RedSocial{
         Usuario* getUsuariopos(int pos);
 
 
-
-
 };

@@ -23,8 +23,6 @@ public:
     Usuario(string nombre);
     Usuario(string nombre, int edad);
     Usuario(string nombre, int edad, string nacionalidad);
-
-
     int getId();
     void mostrar();
     void mostrarPublicaciones();

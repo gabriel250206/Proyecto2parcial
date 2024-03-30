@@ -26,7 +26,7 @@ void RedSocial::mostrarPublicaciones(){
     
 }
 
-Usuario* RedSocial:: getUsuario(int id){
+Usuario* RedSocial::getUsuario(int id){
     for(int i=0;i<usuarioss.size();i++){
         if(usuarioss[i]->getId()==id){
             return usuarioss[i];
@@ -34,6 +34,7 @@ Usuario* RedSocial:: getUsuario(int id){
     }
     return nullptr;
 }
-Usuario* RedSocial:: getUsuariopos(int pos){
+
+Usuario* RedSocial::getUsuariopos(int pos){
     return usuarioss[pos];
 }
