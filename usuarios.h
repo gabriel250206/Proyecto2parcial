@@ -12,6 +12,7 @@ class PublicacionPremium;
 class Usuario{
 private:
     int id;
+    int xp;
 public:
     string nombre;
     int edad;
@@ -31,14 +32,18 @@ public:
     virtual void agregarAmigo(Usuario* nuevoAmigo);
     virtual void crearPublicacion();
     Usuario* getAmigo(int id);
+    int getXp();
+    void increaseXp(int xp);
+    
 
 
 };
 
 class UsuarioPremium: public Usuario{
     public:
+    vector <PublicacionPremium*> publicacionPremium;
     void crearPublicacion();
-    vector <PublicacionPremium*> publicacion;
+    
 };
 
 #endif // USUARIOS_H

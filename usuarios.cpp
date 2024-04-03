@@ -12,12 +12,14 @@ Usuario::Usuario(string nombre){
     this-> edad=0;
     this-> nacionalidad="wakanda";
     this->id=contId++;
+    this->xp=0;
 }
 Usuario::Usuario(string nombre,int edad){
     this-> nombre=nombre;
     this-> edad=edad;
     this-> nacionalidad="wakanda";
     this->id=contId++;
+    this->xp=0;
 }
 
 Usuario::Usuario(string nombre, int edad, string nacionalidad){
@@ -25,12 +27,13 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
     this-> edad=edad;
     this-> nacionalidad=nacionalidad;
     this->id=contId++;
+    this->xp=0;
     
 }
 
 int Usuario:: getId(){return this->id;};
 
-void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<endl;}
+void Usuario:: mostrar(){cout<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<"xp: "<<this->xp<<endl<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicacioness.size();i++){
@@ -49,6 +52,13 @@ Usuario* Usuario::getAmigo(int id){
         }
     }
     return nullptr;
+}
+
+
+int Usuario::getXp(){return this->xp;}
+
+void Usuario::increaseXp(int xp){
+    this->xp=this->xp+xp;
 }
 
 // void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
@@ -79,5 +89,5 @@ void UsuarioPremium:: crearPublicacion(){
         nueva->etiquetas.push_back(getAmigo(ide));
 
     }
-    this->publicacion.push_back(nueva);
+    this->publicacionPremium.push_back(nueva);
 }

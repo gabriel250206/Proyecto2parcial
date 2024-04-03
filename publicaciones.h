@@ -15,9 +15,11 @@ class Publicacion{
         string contenido;
         Usuario* usuario=nullptr;
 
-        void mostrarPublicacion();
+        virtual void mostrarPublicacion();
         Publicacion();
         Publicacion(Usuario* usuario, string fecha, string contenido);
+        int getId();
+        void incrementId();
 };
 
 class PublicacionPremium: public Publicacion{
