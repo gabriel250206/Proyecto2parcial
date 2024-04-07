@@ -1,5 +1,5 @@
 #include "misiones.h"
-
+#include "usuarios.h"
 Mision::Mision(){
     this->nombre="Mision sin nombre";
     this->valor=50;

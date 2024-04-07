@@ -3,7 +3,8 @@
 #define PUBLICACIONES_H
 #include <string>
 #include <vector>
-#include "usuarios.h"
+class Usuario;
+class UsuarioPremium;
 using namespace std ;
 static int idp=00000;
 

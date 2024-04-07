@@ -1,6 +1,7 @@
 
-#include "redsocial.h"
-#pragma once "usuarios.h"
+#pragma once 
+class RedSocial;    
+class Usuario;
 #include <iostream>
 using namespace std;
 

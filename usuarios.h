@@ -9,7 +9,7 @@ using namespace std;
 
 static int contId=00000;
 class Publicacion;
-class PublicacionPremium;
+class PublicacionPremium; 
 
 class Usuario{
 private:

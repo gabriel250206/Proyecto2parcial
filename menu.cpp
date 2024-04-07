@@ -7,12 +7,7 @@
 #include "usuarios.h"
 using namespace std;
 using namespace rlutil;
-class Publicacion;
-class PublicacionPremium;
-class Usuario;
-class UsuarioPremium;
-class RedSocial;
-RedSocial P{"instagram"};
+RedSocial P{"Clans"};
 Usuario *a;
 void editar(){}
 void data()

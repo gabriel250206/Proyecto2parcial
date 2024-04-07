@@ -1,4 +1,5 @@
 #include "publicaciones.h"
+#include "usuarios.h"
 #include <iostream> 
 using namespace std;
 void Publicacion:: mostrarPublicacion(){cout<<"fecha: "<<this->fecha<<endl<<" contenido: "<<this->contenido<<endl<<"usuario: "<<this->usuario->nombre<<endl<<"id: "<<this->id<<endl;}

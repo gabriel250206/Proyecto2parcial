@@ -1,6 +1,6 @@
-#include "publicaciones.h"
-#include "usuarios.h"
+
 #include <vector>
+#include <string>
 using namespace std;
 class Publicacion;
 class PublicacionPremium;
@@ -11,7 +11,7 @@ class RedSocial{
     private:
         vector<Usuario*> usuarioss;
         vector<UsuarioPremium*> usuarioPremium;
-        vector<vector<Publicacion*>> publicacioness;
+        vector<vector<Publicacion*> >publicacioness;/// hacerlo vector de vectores como lo tenia beto
         vector<PublicacionPremium*>publicacionesPremium;
     public:
         string nombre;

@@ -23,7 +23,9 @@ void RedSocial::mostrarUsuarios(){
 }
 
 void RedSocial::mostrarPublicaciones(){
-    
+    for(int i=0;i<publicacioness.size();i++){
+        for(int j=0;j<publicacioness[i].size();j++)cout<<publicacioness[i][i]<<endl;
+    }
 }
 
 Usuario* RedSocial:: getUsuario(int id){
