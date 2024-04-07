@@ -9,7 +9,7 @@ using namespace std ;
 static int idp=00000;
 
 class Publicacion{
-    private:
+    protected:
         int id;
     public:
         string fecha;
@@ -25,6 +25,7 @@ class Publicacion{
 
 class PublicacionPremium: public Publicacion{
     public:
+    PublicacionPremium();
     vector<Usuario*>etiquetas;
     void mostrarPublicacion();
     PublicacionPremium(Usuario* usuario, string fecha, string contenido, vector<UsuarioPremium*>etiquetas);

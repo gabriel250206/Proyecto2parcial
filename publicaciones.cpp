@@ -38,3 +38,8 @@ PublicacionPremium::PublicacionPremium(Usuario* usuario, string fecha, string co
         this->etiquetas[i]=etiquetas[i];
     }
 }
+
+PublicacionPremium::PublicacionPremium(){
+    this->id=idp++;
+    
+}

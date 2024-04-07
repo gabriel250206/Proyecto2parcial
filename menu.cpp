@@ -8,11 +8,12 @@
 using namespace std;
 using namespace rlutil;
 RedSocial P{"Clans"};
-Usuario *a;
+Usuario *pUsuario;
 void editar(){}
+
 void data()
 {
-    a->mostrar();
+    pUsuario->mostrar();
     int mod = 0;
     while (1)
     {
@@ -49,12 +50,12 @@ void data()
 }
 void publ(){
     system("cls");
-    for ( Publicacion * f : a-> publicacioness) {a->mostrarPublicaciones();
+    for ( Publicacion * f : pUsuario-> publicacioness) {pUsuario->mostrarPublicaciones();
     cout <<'\n';}
 }
 void ami(){
     system("cls");
-    for ( Usuario * f : a-> amigos)cout << f->nombre<<'\n';
+    for ( Usuario * f : pUsuario-> amigos)cout << f->nombre<<'\n';
 }
 
 void opciones()
@@ -137,7 +138,7 @@ bool menuk()
             {
                 if (mod == P.numeroDeUsuarios)return 0;
                 else{
-                a = P.getUsuariopos(mod);
+                pUsuario = P.getUsuariopos(mod);
                 opciones();
                 }
             }

@@ -86,7 +86,7 @@ void Usuario::increaseXp(int xp){
 // }
 
  void Usuario:: crearPublicacion(){
-    Publicacion* nueva;
+    Publicacion* nueva=new Publicacion();
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;
     nueva->usuario=this;
@@ -175,7 +175,7 @@ UsuarioPremium::UsuarioPremium(string nombre, int edad, string nacionalidad):Usu
 
 
 void UsuarioPremium:: crearPublicacion(){
-    PublicacionPremium* nueva;
+    PublicacionPremium* nueva= new PublicacionPremium();
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;
     nueva->usuario=this;
