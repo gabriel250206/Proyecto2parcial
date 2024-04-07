@@ -142,98 +142,7 @@ void ami(){
         
     }
 }
-void newUser(){
-    cout<<"escribe su nombre"<<endl;
-    string nombre;
-    cin>>nombre;
-    int mod=0;
-    while(1){
-        cls();
-        cout<<endl<<"tiene nacionalidad?"<<endl;
-        if(mod==0){
-            cout<<">si"<<endl<<"no"<<endl;
-        }
-        if(mod==1){
-            
-            cout<<"si"<<endl<<">no"<<endl;
-        }
-        if(kbhit){
-            int k=getkey();
-            if(k==14){
-                mod--;
-                if(mod<0){
-                    mod=1;
-                }
-            }
-            if(k==15){
-                mod++;
-                if(mod>1){
-                    mod=0;
-                }
-            }
-            if(k==1){
-                if(mod==0){
-                    cout<<"escribe la edad"<<endl;
-                    int edad;
-                    cin>>edad;
-                    cout<<"escribe la nacionalidad"<<endl;
-                    string nacionalidad;
-                    cin>>nacionalidad;
-                    Usuario* pNuevo= new Usuario(nombre,edad,nacionalidad);
-                    P.agregarUsuario(pNuevo);
-                    return;
 
-                }
-                if(mod==1){
-                    int mod2=0;
-                    while(1){
-                        
-                        cls();
-                        cout<<"tiene edad?"<<endl;
-                        if(mod2==0){
-                            cout<<">si"<<endl<<"no"<<endl;
-                        }
-                        if(mod2==1){
-            
-                             cout<<"si"<<endl<<">no"<<endl;
-                        }
-                        if(kbhit){
-                            int k=getkey();
-                            if(k==14){
-                                mod2--;
-                                if(mod2<0){
-                                    mod2=1;
-                                }
-                            }
-                        if(k==15){
-                            mod2++;
-                            if(mod2>1){
-                               mod2=0;
-                            }
-                        }
-                        if(k==1){
-                            if(mod2==0){
-                                
-                                cout<<"escribe la edad"<<endl;
-                                int edad;
-                                cin>>edad;
-                                Usuario* pNuevo=new Usuario(nombre,edad);
-                                P.agregarUsuario(pNuevo);
-                                return;
-                            }
-                            if(mod2==1){
-                                Usuario* pNuevo=new Usuario(nombre);
-                                P.agregarUsuario(pNuevo);
-                                return;
-                            }
-                        }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 void opciones()
 {
     int mod = 0;
@@ -290,10 +199,10 @@ bool menuk()
     {
         hidecursor();
         system("cls");
-        if (mod > P.numeroDeUsuarios+1)
+        if (mod > P.numeroDeUsuarios+2)
             mod = 0;
         if (mod < 0)
-            mod = P.numeroDeUsuarios;
+            mod = P.numeroDeUsuarios+2;
         for (int i = 0; i < P.numeroDeUsuarios; i++)
         {
             if (mod == i)
@@ -305,6 +214,9 @@ bool menuk()
         cout << "Agregar usuarios"<<endl;
         if(mod==P.numeroDeUsuarios+1)
             cout<<">";
+        cout<<"Agregar usuario premium"<<endl;
+        if(mod==P.numeroDeUsuarios+2)
+            cout<<">";
         cout<<"Salir";
         if (kbhit)
         {
@@ -315,11 +227,15 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
-                if (mod == P.numeroDeUsuarios+1)return 0;
+                if (mod == P.numeroDeUsuarios+2)return 0;
                 else{
                     if(mod==P.numeroDeUsuarios){
                         cls();
-                        newUser();
+                        P.newUser(mod,P.numeroDeUsuarios);
+                    }
+                    if(mod==P.numeroDeUsuarios+1){
+                        cls();
+                        P.newUser(mod,P.numeroDeUsuarios);
                     }
                     else{
                     pUsuario = P.getUsuariopos(mod);

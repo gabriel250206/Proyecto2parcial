@@ -23,6 +23,8 @@ class RedSocial{
         void mostrarPublicaciones();
         Usuario* getUsuario(int id);
         Usuario* getUsuariopos(int pos);
+        void newUser(int mod, int numero);
+        
 
 RedSocial(std::string nombre);
         RedSocial(std::string nombre,vector<Usuario*>usuarios);

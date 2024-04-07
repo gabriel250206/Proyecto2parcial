@@ -3,6 +3,7 @@
 #include "usuarios.h"
 #include <iostream>
 using namespace std;
+using namespace rlutil;
 class Publicacion;
 class PublicacionPremium;
 class Usuario;
@@ -53,3 +54,120 @@ RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios,vector<vector<Public
     this->usuarioss=usuarios;
     this->publicacioness=publicaciones;
 }
+
+void RedSocial:: newUser(int mod5,int numero){
+    cout<<"escribe su nombre"<<endl;
+    string nombre;
+    cin>>nombre;
+    int mod=0;
+    while(1){
+        cls();
+        cout<<endl<<"tiene nacionalidad?"<<endl;
+        if(mod==0){
+            cout<<">si"<<endl<<"no"<<endl;
+        }
+        if(mod==1){
+            
+            cout<<"si"<<endl<<">no"<<endl;
+        }
+        if(kbhit){
+            int k=getkey();
+            if(k==14){
+                mod--;
+                if(mod<0){
+                    mod=1;
+                }
+            }
+            if(k==15){
+                mod++;
+                if(mod>1){
+                    mod=0;
+                }
+            }
+            if(k==1){
+                if(mod==0){
+                    cout<<"escribe la edad"<<endl;
+                    int edad;
+                    cin>>edad;
+                    cout<<"escribe la nacionalidad"<<endl;
+                    string nacionalidad;
+                    cin>>nacionalidad;
+                    if(mod5==numero){
+                        Usuario* pNuevo= new Usuario(nombre,edad,nacionalidad);
+                        this->agregarUsuario(pNuevo);
+                        return;
+                    }
+                    if(mod5==numero+1){
+                        Usuario* pNuevo= new UsuarioPremium(nombre,edad,nacionalidad);
+                        this->agregarUsuario(pNuevo);
+                        return;
+                    }
+                    
+
+                }
+                if(mod==1){
+                    int mod2=0;
+                    while(1){
+                        
+                        cls();
+                        cout<<"tiene edad?"<<endl;
+                        if(mod2==0){
+                            cout<<">si"<<endl<<"no"<<endl;
+                        }
+                        if(mod2==1){
+            
+                             cout<<"si"<<endl<<">no"<<endl;
+                        }
+                        if(kbhit){
+                            int k=getkey();
+                            if(k==14){
+                                mod2--;
+                                if(mod2<0){
+                                    mod2=1;
+                                }
+                            }
+                        if(k==15){
+                            mod2++;
+                            if(mod2>1){
+                               mod2=0;
+                            }
+                        }
+                        if(k==1){
+                            if(mod2==0){
+                                
+                                cout<<"escribe la edad"<<endl;
+                                int edad;
+                                cin>>edad;
+                                if(mod5==numero){
+                                    Usuario* pNuevo=new Usuario(nombre,edad);
+                                    this->agregarUsuario(pNuevo);
+                                    return;
+                                }
+                                if(mod5==numero+1){
+                                    Usuario* pNuevo=new UsuarioPremium(nombre,edad);
+                                    this->agregarUsuario(pNuevo);
+                                    return;
+                                }
+                            }
+                            if(mod2==1){
+                                if(mod5==numero){
+                                    Usuario* pNuevo=new Usuario(nombre);
+                                    this->agregarUsuario(pNuevo);
+                                    return;
+                                }
+                                if(mod5==numero+1){
+                                    Usuario* pNuevo=new Usuario(nombre);
+                                    this->agregarUsuario(pNuevo);
+                                    return;
+                                }
+                                
+                            }
+                        }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
