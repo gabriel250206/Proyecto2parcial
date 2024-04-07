@@ -50,14 +50,13 @@ void data()
 
 }
 void publ(){
+
     system("cls");
+    int mod=0;
     while(1){
         cls();
         pUsuario->mostrarPublicaciones();
         
-        
-        
-        int mod=0;
         if(mod==0){
             cout<<">crear publicacion"<<endl;
             cout<<"volver"<<endl;
@@ -99,6 +98,7 @@ void ami(){
     int mod=0;
     while(1){
         cls();
+        
         for(int i=0;i<pUsuario->amigos.size();i++){
             cout<<pUsuario->amigos[i]->nombre<<endl;
         }
@@ -131,8 +131,8 @@ void ami(){
                     cout<<"escribe su id"<<endl;
                     int id;
                     cin>>id;
-                    pUsuario->agregarAmigo(P.getUsuario(id));
-                    cout<<"agrega"<<endl;
+                    Usuario* nuevoUser=P.getUsuario(id);
+                    pUsuario->agregarAmigo(nuevoUser);
                 }
                 cout<<"sale"<<endl;
                 return;
@@ -142,7 +142,98 @@ void ami(){
         
     }
 }
+void newUser(){
+    cout<<"escribe su nombre"<<endl;
+    string nombre;
+    cin>>nombre;
+    int mod=0;
+    while(1){
+        cls();
+        cout<<endl<<"tiene nacionalidad?"<<endl;
+        if(mod==0){
+            cout<<">si"<<endl<<"no"<<endl;
+        }
+        if(mod==1){
+            
+            cout<<"si"<<endl<<">no"<<endl;
+        }
+        if(kbhit){
+            int k=getkey();
+            if(k==14){
+                mod--;
+                if(mod<0){
+                    mod=1;
+                }
+            }
+            if(k==15){
+                mod++;
+                if(mod>1){
+                    mod=0;
+                }
+            }
+            if(k==1){
+                if(mod==0){
+                    cout<<"escribe la edad"<<endl;
+                    int edad;
+                    cin>>edad;
+                    cout<<"escribe la nacionalidad"<<endl;
+                    string nacionalidad;
+                    cin>>nacionalidad;
+                    Usuario* pNuevo= new Usuario(nombre,edad,nacionalidad);
+                    P.agregarUsuario(pNuevo);
+                    return;
 
+                }
+                if(mod==1){
+                    int mod2=0;
+                    while(1){
+                        
+                        cls();
+                        cout<<"tiene edad?"<<endl;
+                        if(mod2==0){
+                            cout<<">si"<<endl<<"no"<<endl;
+                        }
+                        if(mod2==1){
+            
+                             cout<<"si"<<endl<<">no"<<endl;
+                        }
+                        if(kbhit){
+                            int k=getkey();
+                            if(k==14){
+                                mod2--;
+                                if(mod2<0){
+                                    mod2=1;
+                                }
+                            }
+                        if(k==15){
+                            mod2++;
+                            if(mod2>1){
+                               mod2=0;
+                            }
+                        }
+                        if(k==1){
+                            if(mod2==0){
+                                
+                                cout<<"escribe la edad"<<endl;
+                                int edad;
+                                cin>>edad;
+                                Usuario* pNuevo=new Usuario(nombre,edad);
+                                P.agregarUsuario(pNuevo);
+                                return;
+                            }
+                            if(mod2==1){
+                                Usuario* pNuevo=new Usuario(nombre);
+                                P.agregarUsuario(pNuevo);
+                                return;
+                            }
+                        }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 void opciones()
 {
     int mod = 0;
@@ -199,7 +290,7 @@ bool menuk()
     {
         hidecursor();
         system("cls");
-        if (mod > P.numeroDeUsuarios)
+        if (mod > P.numeroDeUsuarios+1)
             mod = 0;
         if (mod < 0)
             mod = P.numeroDeUsuarios;
@@ -211,7 +302,10 @@ bool menuk()
         }
         if (mod == P.numeroDeUsuarios)
             cout << ">";
-        cout << "Salir";
+        cout << "Agregar usuarios"<<endl;
+        if(mod==P.numeroDeUsuarios+1)
+            cout<<">";
+        cout<<"Salir";
         if (kbhit)
         {
             int k = getkey();
@@ -221,10 +315,17 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
-                if (mod == P.numeroDeUsuarios)return 0;
+                if (mod == P.numeroDeUsuarios+1)return 0;
                 else{
-                pUsuario = P.getUsuariopos(mod);
-                opciones();
+                    if(mod==P.numeroDeUsuarios){
+                        cls();
+                        newUser();
+                    }
+                    else{
+                    pUsuario = P.getUsuariopos(mod);
+                    opciones();
+                }
+                
                 }
             }
         }
@@ -234,8 +335,10 @@ int main()
 {   
     Usuario Alberto("Alberto" , 16 , "mexicano");
     Usuario Gabriel("Gabriel" , 18 , "mexicano");
+    Usuario LanaDelRey("Lana del rey",21,"oaxaca");
     P.agregarUsuario(&Alberto);
     P.agregarUsuario(&Gabriel);
+    P.agregarUsuario(&LanaDelRey);
     hidecursor();
     setColor(89);
     setColor(BLACK);

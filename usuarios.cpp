@@ -48,20 +48,25 @@ void Usuario:: mostrarPublicaciones(){
 void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
     amigos.push_back(nuevoAmigo);
     nuevoAmigo->amigos.push_back(this);
-    if(this->mision->tipo=="amigos"){
+    if(this->mision!=nullptr){
+        if(this->mision->tipo=="amigos"){
         this->mision->avanzaProgreso();
         if(this->mision->getProgreso()==this->mision->getProgresoTotal()){
             this->mision=nullptr;
             this->mision->completada(this);
         }
     }
-    if(nuevoAmigo->mision->tipo=="amigos"){
+    }
+    if(mision!=nullptr){
+        if(nuevoAmigo->mision->tipo=="amigos"){
         this->mision->avanzaProgreso();
         if(nuevoAmigo->mision->getProgreso()==nuevoAmigo->mision->getProgresoTotal()){
             nuevoAmigo->mision=nullptr;
             nuevoAmigo->mision->completada(nuevoAmigo);
         }
     }
+    }
+    
     
 }
 
