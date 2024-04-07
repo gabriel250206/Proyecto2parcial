@@ -2,7 +2,7 @@
 #include "usuarios.h"
 #include <iostream> 
 using namespace std;
-void Publicacion:: mostrarPublicacion(){cout<<"fecha: "<<this->fecha<<endl<<" contenido: "<<this->contenido<<endl<<"usuario: "<<this->usuario->nombre<<endl<<"id: "<<this->id<<endl;}
+void Publicacion:: mostrarPublicacion(){cout<<"fecha: "<<this->fecha<<endl<<" contenido: "<<this->contenido<<endl<<"usuario: "<<this->usuario->nombre<<endl<<"id de la publicacion: "<<this->id<<endl;}
 
 Publicacion::Publicacion(){
     this->usuario=nullptr;

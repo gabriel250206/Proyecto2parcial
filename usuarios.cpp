@@ -42,6 +42,7 @@ void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicacioness.size();i++){
         publicacioness[i]->mostrarPublicacion();
+        cout<<endl;
     }
 }
 void Usuario:: agregarAmigo(Usuario* nuevoAmigo){

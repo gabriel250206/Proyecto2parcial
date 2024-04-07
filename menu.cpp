@@ -13,11 +13,12 @@ void editar(){}
 
 void data()
 {
-    pUsuario->mostrar();
+    
     int mod = 0;
     while (1)
     {
         system("cls");
+        pUsuario->mostrar();
         if (mod > 1)
             mod = 0;
         if (mod < 0)
@@ -50,12 +51,96 @@ void data()
 }
 void publ(){
     system("cls");
-    for ( Publicacion * f : pUsuario-> publicacioness) {pUsuario->mostrarPublicaciones();
-    cout <<'\n';}
+    while(1){
+        cls();
+        pUsuario->mostrarPublicaciones();
+        
+        
+        
+        int mod=0;
+        if(mod==0){
+            cout<<">crear publicacion"<<endl;
+            cout<<"volver"<<endl;
+        }
+        if(mod==1){
+            cout<<"crear publicacion"<<endl;
+            cout<<">volver"<<endl;
+        }
+        if(kbhit){
+            int k=getkey();
+            
+            if(k==14){
+                mod--;
+                if(mod<0){
+                mod=1;
+        }
+            }
+            if(k==15){
+                mod++;
+                if(mod>1){
+                mod=0;
+                }
+            }
+            if(k==1){
+                if(mod==0){
+                    pUsuario->crearPublicacion();
+                }
+                
+                return;
+            }
+        }
+
+        
+    }
+
 }
 void ami(){
     system("cls");
-    for ( Usuario * f : pUsuario-> amigos)cout << f->nombre<<'\n';
+    int mod=0;
+    while(1){
+        cls();
+        for(int i=0;i<pUsuario->amigos.size();i++){
+            cout<<pUsuario->amigos[i]->nombre<<endl;
+        }
+      
+        if(mod==0){
+            cout<<">agregar amigo"<<endl;
+            cout<<"volver"<<endl;
+        }
+        if(mod==1){
+            cout<<"agregar amigo"<<endl;
+            cout<<">volver"<<endl;
+        }
+        if(kbhit){
+            int k=getkey();
+            
+            if(k==14){
+                mod--;
+                if(mod<0){
+                mod=1;
+        }
+            }
+            if(k==15){
+                mod++;
+                if(mod>1){
+                mod=0;
+                }
+            }
+            if(k==1){
+                if(mod==0){
+                    cout<<"escribe su id"<<endl;
+                    int id;
+                    cin>>id;
+                    pUsuario->agregarAmigo(P.getUsuario(id));
+                    cout<<"agrega"<<endl;
+                }
+                cout<<"sale"<<endl;
+                return;
+            }
+        }
+
+        
+    }
 }
 
 void opciones()

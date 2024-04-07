@@ -6,7 +6,7 @@
 class Usuario;
 class UsuarioPremium;
 using namespace std ;
-static int idp=00000;
+static int idp=1;
 
 class Publicacion{
     protected:

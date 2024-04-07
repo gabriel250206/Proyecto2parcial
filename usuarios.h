@@ -7,7 +7,7 @@
 #include "rlutil.h"
 using namespace std;
 
-static int contId=00000;
+static int contId=1;
 class Publicacion;
 class PublicacionPremium; 
 
