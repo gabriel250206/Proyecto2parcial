@@ -5,12 +5,58 @@
 #include "redsocial.h"
 #include "publicaciones.h"
 #include "usuarios.h"
+#include "Clan.h"
 using namespace std;
 using namespace rlutil;
 RedSocial P{"Clans"};
 Usuario *pUsuario;
-void editar(){}
 
+void editar(){}
+void misiones(Usuario* pUsuario){
+    int mod=0;
+    Mision* pMision;
+    while(1){
+        cls();
+        if(mod>3){
+            mod=0;
+        }
+        if(mod<0){
+            mod=3;
+        }
+        if(mod==0){
+            cout<<">";
+        }
+        cout<<"mision de amigo"<<endl;
+        if(mod==1){
+            cout<<">";
+        }
+        cout<<"mision de publicacion"<<endl;
+        if(mod==2)
+            cout<<">";
+        cout<<"salir"<<endl;
+        if(kbhit){
+            int k=getkey();
+            if(k==14){
+                mod--;
+            }
+            if(k==15){
+                mod++;
+            }
+            if(k==1){
+                if(mod==0){
+                    pMision= new MisionAmigos;
+                    pUsuario->selectMision(pMision);
+                }
+                if(mod==1){
+
+                }
+                if(mod==2){
+                    return;
+                }
+            }
+        }
+    }
+}
 void data()
 {
     
@@ -143,16 +189,16 @@ void ami(){
     }
 }
 
-void opciones()
+void opciones(Usuario* pUsuario)
 {
     int mod = 0;
     while (1)
     {
         system("cls");
-        if (mod > 3)
+        if (mod > 4)
             mod = 0;
         if (mod < 0)
-            mod = 3;
+            mod = 4;
         if (mod == 0)
             cout << ">";
         cout << "datos\n";
@@ -164,7 +210,11 @@ void opciones()
         cout << "amigos\n";
         if (mod == 3)
             cout << ">";
+        cout << "agregar mision\n";
+        if (mod == 4)
+            cout << ">";
         cout << "volver\n";
+        
         if (kbhit)
         {
             int k = getkey();
@@ -180,7 +230,9 @@ void opciones()
                     publ();
                 if (mod == 2)
                     ami();
-                if (mod == 3)
+                if (mod==3)
+                    misiones(pUsuario);
+                if (mod == 4)
                     return;
             }
         }
@@ -194,15 +246,24 @@ void Tittle()
 }
 bool menuk()
 {
+    Clan agua("agua");
+    Clan fuego("fuego");
+    Clan tierra("tierra");
+    Clan aire("aire");
+    vector<Clan*>tribus;
+    tribus.push_back(&agua);
+    tribus.push_back(&fuego);
+    tribus.push_back(&tierra);
+    tribus.push_back(&aire);
     int mod = 0;
     while (1)
     {
         hidecursor();
         system("cls");
-        if (mod > P.numeroDeUsuarios+2)
+        if (mod > P.numeroDeUsuarios+3)
             mod = 0;
         if (mod < 0)
-            mod = P.numeroDeUsuarios+2;
+            mod = P.numeroDeUsuarios+3;
         for (int i = 0; i < P.numeroDeUsuarios; i++)
         {
             if (mod == i)
@@ -217,6 +278,9 @@ bool menuk()
         cout<<"Agregar usuario premium"<<endl;
         if(mod==P.numeroDeUsuarios+2)
             cout<<">";
+        cout<<"mostrar clanes"<<endl;
+        if(mod==P.numeroDeUsuarios+3)
+            cout<<">";
         cout<<"Salir";
         if (kbhit)
         {
@@ -227,19 +291,25 @@ bool menuk()
                 mod++;
             if (k == 1)
             {
-                if (mod == P.numeroDeUsuarios+2)return 0;
+                if (mod == P.numeroDeUsuarios+3)return 0;
                 else{
                     if(mod==P.numeroDeUsuarios){
                         cls();
                         P.newUser(mod,P.numeroDeUsuarios);
+                        
                     }
                     if(mod==P.numeroDeUsuarios+1){
                         cls();
                         P.newUser(mod,P.numeroDeUsuarios);
+                        
+                    }
+                    if(mod==P.numeroDeUsuarios+2){
+                       
+                        P.mostrarClanes(tribus);
                     }
                     else{
                     pUsuario = P.getUsuariopos(mod);
-                    opciones();
+                    opciones(pUsuario);
                 }
                 
                 }
@@ -251,10 +321,13 @@ int main()
 {   
     Usuario Alberto("Alberto" , 16 , "mexicano");
     Usuario Gabriel("Gabriel" , 18 , "mexicano");
-    Usuario LanaDelRey("Lana del rey",21,"oaxaca");
+    UsuarioPremium LanaDelRey("Lana del rey",21,"oaxaca");
     P.agregarUsuario(&Alberto);
     P.agregarUsuario(&Gabriel);
     P.agregarUsuario(&LanaDelRey);
+
+    
+
     hidecursor();
     setColor(89);
     setColor(BLACK);

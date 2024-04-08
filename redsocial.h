@@ -6,6 +6,7 @@ class Publicacion;
 class PublicacionPremium;
 class Usuario;
 class UsuarioPremium;
+class Clan;
 class RedSocial{
 
     private:
@@ -24,6 +25,7 @@ class RedSocial{
         Usuario* getUsuario(int id);
         Usuario* getUsuariopos(int pos);
         void newUser(int mod, int numero);
+        void mostrarClanes(vector<Clan*>clanes);
         
 
 RedSocial(std::string nombre);

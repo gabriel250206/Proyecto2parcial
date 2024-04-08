@@ -50,7 +50,9 @@ void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
     nuevoAmigo->amigos.push_back(this);
     if(this->mision!=nullptr){
         if(this->mision->tipo=="amigos"){
+            cout<<"entra"<<endl;
         this->mision->avanzaProgreso();
+            cout<<"puso"<<endl;
         if(this->mision->getProgreso()==this->mision->getProgresoTotal()){
             this->mision=nullptr;
             this->mision->completada(this);
@@ -59,7 +61,9 @@ void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
     }
     if(mision!=nullptr){
         if(nuevoAmigo->mision->tipo=="amigos"){
+            cout<<"entra"<<endl;
         this->mision->avanzaProgreso();
+            cout<<"puso"<<endl;
         if(nuevoAmigo->mision->getProgreso()==nuevoAmigo->mision->getProgresoTotal()){
             nuevoAmigo->mision=nullptr;
             nuevoAmigo->mision->completada(nuevoAmigo);
@@ -102,56 +106,19 @@ void Usuario::increaseXp(int xp){
 
 string Usuario::getClan(){return this->clan;}
 
-void Usuario::setClan(string clan){
-    this->clan=clan;
+ void Usuario::setClan(string clan){
+         this->clan=clan;
 }
 
-void Usuario::selectMision(){
-    cout<<"Que mision deseas hacer?"<<endl;
-    int k=0;
-    while(1){
-
-        if(k<0){
-            k=1;
-        }
-        if(k>1){
-            k=0;
-        }
-
-        if(k==0){
-            cout<<">mision de amigos"<<endl;
-            cout<<"mision de hacer una publicacion"<<endl;
-        }
-        if(k==1){
-            cout<<"mision de amigos"<<endl;
-            cout<<">mision de hacer una publicacion"<<endl;
-        }
-
-
-        if(kbhit()){
-            int eleccion=getkey();
-            if(eleccion==14){
-                k--;
-            }
-            if(eleccion==15){
-                k++;
-            }
-            if(eleccion==1){
-                if(k==0){
-                    mision= new MisionAmigos();
-                }
-                if(k==1){
-                    mision=new MisionPublicacion();
-                }
-            }
-            
-
-
-        }
-    }
+void Usuario::selectMision(Mision* pMision){
+    this->mision=pMision;
 }
 
 
+
+// void Usuario::setClan(string nombre){
+//     this->clan=nombre;
+// }
 
 //----------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------

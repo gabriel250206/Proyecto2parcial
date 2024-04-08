@@ -10,6 +10,7 @@ using namespace std;
 static int contId=1;
 class Publicacion;
 class PublicacionPremium; 
+class Mision;
 
 class Usuario{
 private:
@@ -41,7 +42,8 @@ public:
     Usuario* getAmigo(int id);
     int getXp();
     void increaseXp(int xp);
-    void selectMision();
+    void selectMision(Mision* pMision);
+    
     
 
 
@@ -58,8 +60,3 @@ class UsuarioPremium: public Usuario{
 };
 
 #endif // USUARIOS_H
-
-
-
-
-

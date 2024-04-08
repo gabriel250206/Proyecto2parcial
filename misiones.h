@@ -19,7 +19,6 @@ class Mision{
         // Mision(string nombre);
         void completada(Usuario* usuario);
         void avanzaProgreso();
-        void terminar();
         void mostrarProgreso();
         int getProgreso();
         int getProgresoTotal();

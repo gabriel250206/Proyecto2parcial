@@ -1,6 +1,7 @@
 #include "redsocial.h"
 #include "publicaciones.h"
 #include "usuarios.h"
+#include "clan.h"
 #include <iostream>
 using namespace std;
 using namespace rlutil;
@@ -59,33 +60,33 @@ void RedSocial:: newUser(int mod5,int numero){
     cout<<"escribe su nombre"<<endl;
     string nombre;
     cin>>nombre;
-    int mod=0;
+    int amod=0;
     while(1){
         cls();
         cout<<endl<<"tiene nacionalidad?"<<endl;
-        if(mod==0){
+        if(amod==0){
             cout<<">si"<<endl<<"no"<<endl;
         }
-        if(mod==1){
+        if(amod==1){
             
             cout<<"si"<<endl<<">no"<<endl;
         }
         if(kbhit){
             int k=getkey();
             if(k==14){
-                mod--;
-                if(mod<0){
-                    mod=1;
+                amod--;
+                if(amod<0){
+                    amod=1;
                 }
             }
             if(k==15){
-                mod++;
-                if(mod>1){
-                    mod=0;
+                amod++;
+                if(amod>1){
+                    amod=0;
                 }
             }
             if(k==1){
-                if(mod==0){
+                if(amod==0){
                     cout<<"escribe la edad"<<endl;
                     int edad;
                     cin>>edad;
@@ -98,14 +99,14 @@ void RedSocial:: newUser(int mod5,int numero){
                         return;
                     }
                     if(mod5==numero+1){
-                        Usuario* pNuevo= new UsuarioPremium(nombre,edad,nacionalidad);
+                        UsuarioPremium* pNuevo= new UsuarioPremium(nombre,edad,nacionalidad);
                         this->agregarUsuario(pNuevo);
                         return;
                     }
                     
 
                 }
-                if(mod==1){
+                if(amod==1){
                     int mod2=0;
                     while(1){
                         
@@ -144,7 +145,7 @@ void RedSocial:: newUser(int mod5,int numero){
                                     return;
                                 }
                                 if(mod5==numero+1){
-                                    Usuario* pNuevo=new UsuarioPremium(nombre,edad);
+                                    UsuarioPremium* pNuevo=new UsuarioPremium(nombre,edad);
                                     this->agregarUsuario(pNuevo);
                                     return;
                                 }
@@ -156,7 +157,7 @@ void RedSocial:: newUser(int mod5,int numero){
                                     return;
                                 }
                                 if(mod5==numero+1){
-                                    Usuario* pNuevo=new Usuario(nombre);
+                                    UsuarioPremium* pNuevo=new UsuarioPremium(nombre);
                                     this->agregarUsuario(pNuevo);
                                     return;
                                 }
@@ -171,3 +172,9 @@ void RedSocial:: newUser(int mod5,int numero){
     }
 }
 
+void RedSocial::mostrarClanes(vector<Clan*>clan){
+    cls();
+    for(int i=0;i<4;i++){
+        cout<<"nacion del "<<clan[i]->getName()<<endl;
+    }
+}
