@@ -15,6 +15,7 @@ Usuario::Usuario(string nombre){
     this->clan="lobo solitario";
     this->id=contId++;
     this->xp=0;
+    this->origen="lobo solitario";
 }
 Usuario::Usuario(string nombre,int edad){
     this-> nombre=nombre;
@@ -23,6 +24,7 @@ Usuario::Usuario(string nombre,int edad){
     this->clan="lobo solitario";
     this->id=contId++;
     this->xp=0;
+    this->origen="lobo solitario";
 }
 
 Usuario::Usuario(string nombre, int edad, string nacionalidad){
@@ -32,6 +34,7 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
     this->clan="lobo solitario";
     this->id=contId++;
     this->xp=0;
+    this->origen="lobo solitario";
     
 }
 
@@ -46,8 +49,10 @@ void Usuario:: mostrarPublicaciones(){
     }
 }
 void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
+    cout<<"entra"<<endl;
     amigos.push_back(nuevoAmigo);
     nuevoAmigo->amigos.push_back(this);
+    cout<<"agrega"<<endl;
     if(this->mision!=nullptr){
         if(this->mision->tipo=="amigos"){
             cout<<"entra"<<endl;
@@ -59,7 +64,7 @@ void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
         }
     }
     }
-    if(mision!=nullptr){
+    if(nuevoAmigo->mision!=nullptr){
         if(nuevoAmigo->mision->tipo=="amigos"){
             cout<<"entra"<<endl;
         this->mision->avanzaProgreso();
@@ -114,7 +119,9 @@ void Usuario::selectMision(Mision* pMision){
     this->mision=pMision;
 }
 
-
+string Usuario::clanOrg(){
+    return this->origen;
+}
 
 // void Usuario::setClan(string nombre){
 //     this->clan=nombre;
@@ -128,13 +135,16 @@ void Usuario::selectMision(Mision* pMision){
 
 UsuarioPremium::UsuarioPremium(string nombre):Usuario(nombre){
     setClan("Avatar");
+    this->origen="lobo solitario";
 }
 UsuarioPremium::UsuarioPremium(string nombre,int edad):Usuario(nombre,edad){
     setClan("Avatar");
+    this->origen="lobo solitario";
 }
 
 UsuarioPremium::UsuarioPremium(string nombre, int edad, string nacionalidad):Usuario(nombre,edad,nacionalidad){
     setClan("Avatar");
+    this->origen="lobo solitario";
     
 }
 
@@ -147,20 +157,20 @@ UsuarioPremium::UsuarioPremium(string nombre, int edad, string nacionalidad):Usu
 
 
 
-void UsuarioPremium:: crearPublicacion(){
-    PublicacionPremium* nueva= new PublicacionPremium();
-    cout<<"escribe la fecha y el contenido"<<endl;
-    cin>>nueva->fecha>>nueva->contenido;
-    nueva->usuario=this;
-    cout<<"cuantos amigos seran?"<<endl;
-    int x;
-    cin>>x;
-    for(int i=0;i<x;i++){
-        int ide;
-        cout<<"inserta su id"<<endl;
-        cin>>ide;
-        nueva->etiquetas.push_back(getAmigo(ide));
+// void UsuarioPremium:: crearPublicacion(){
+//     PublicacionPremium* nueva= new PublicacionPremium();
+//     cout<<"escribe la fecha y el contenido"<<endl;
+//     cin>>nueva->fecha>>nueva->contenido;
+//     nueva->usuario=this;
+//     cout<<"cuantos amigos seran?"<<endl;
+//     int x;
+//     cin>>x;
+//     for(int i=0;i<x;i++){
+//         int ide;
+//         cout<<"inserta su id"<<endl;
+//         cin>>ide;
+//         nueva->etiquetas.push_back(getAmigo(ide));
 
-    }
-    this->publicacionPremium.push_back(nueva);
-}
+//     }
+//     this->publicacionPremium.push_back(nueva);
+// }

@@ -12,9 +12,9 @@ RedSocial P{"Clans"};
 Usuario *pUsuario;
 
 void editar(){}
-void misiones(Usuario* pUsuario){
+void misiones(Usuario* pUser){
     int mod=0;
-    Mision* pMision;
+    Mision* pMision=nullptr;
     while(1){
         cls();
         if(mod>3){
@@ -44,11 +44,20 @@ void misiones(Usuario* pUsuario){
             }
             if(k==1){
                 if(mod==0){
-                    pMision= new MisionAmigos;
-                    pUsuario->selectMision(pMision);
+                    cout<<"funciona";
+                    pMision= new MisionAmigos();
+                    cout<<"funciona";
+                    pUser->selectMision(pMision);
+                    cout<<"funciona";
+                    return;
                 }
                 if(mod==1){
-
+                    cout<<"funciona";
+                    pMision= new MisionPublicacion();
+                    cout<<"funciona";
+                    pUser->selectMision(pMision);
+                    cout<<"funciona";
+                    return;
                 }
                 if(mod==2){
                     return;
@@ -57,14 +66,14 @@ void misiones(Usuario* pUsuario){
         }
     }
 }
-void data()
+void data(Usuario* pUser)
 {
     
     int mod = 0;
     while (1)
     {
         system("cls");
-        pUsuario->mostrar();
+        pUser->mostrar();
         if (mod > 1)
             mod = 0;
         if (mod < 0)
@@ -95,13 +104,13 @@ void data()
 
 
 }
-void publ(){
-
+void publ(Usuario* pUser){
     system("cls");
     int mod=0;
     while(1){
+        
         cls();
-        pUsuario->mostrarPublicaciones();
+        pUser->mostrarPublicaciones();
         
         if(mod==0){
             cout<<">crear publicacion"<<endl;
@@ -128,7 +137,7 @@ void publ(){
             }
             if(k==1){
                 if(mod==0){
-                    pUsuario->crearPublicacion();
+                    pUser->crearPublicacion();
                 }
                 
                 return;
@@ -139,14 +148,14 @@ void publ(){
     }
 
 }
-void ami(){
+void ami(Usuario *pUser){
     system("cls");
     int mod=0;
     while(1){
         cls();
         
-        for(int i=0;i<pUsuario->amigos.size();i++){
-            cout<<pUsuario->amigos[i]->nombre<<endl;
+        for(int i=0;i<pUser->amigos.size();i++){
+            cout<<pUser->amigos[i]->nombre<<endl;
         }
       
         if(mod==0){
@@ -178,7 +187,7 @@ void ami(){
                     int id;
                     cin>>id;
                     Usuario* nuevoUser=P.getUsuario(id);
-                    pUsuario->agregarAmigo(nuevoUser);
+                    pUser->agregarAmigo(nuevoUser);
                 }
                 cout<<"sale"<<endl;
                 return;
@@ -189,7 +198,7 @@ void ami(){
     }
 }
 
-void opciones(Usuario* pUsuario)
+void opciones(Usuario* pUser)
 {
     int mod = 0;
     while (1)
@@ -225,11 +234,12 @@ void opciones(Usuario* pUsuario)
             if (k == 1)
             {
                 if (mod == 0)
-                    data();
+                    data(pUser);
                 if (mod == 1)
-                    publ();
+                    
+                    publ(pUser);
                 if (mod == 2)
-                    ami();
+                    ami(pUser);
                 if (mod==3)
                     misiones(pUsuario);
                 if (mod == 4)
@@ -258,7 +268,9 @@ bool menuk()
     int mod = 0;
     while (1)
     {
+        Usuario* pUser;
         hidecursor();
+        inicio:
         system("cls");
         if (mod > P.numeroDeUsuarios+3)
             mod = 0;
@@ -293,23 +305,19 @@ bool menuk()
             {
                 if (mod == P.numeroDeUsuarios+3)return 0;
                 else{
-                    if(mod==P.numeroDeUsuarios){
+                    if(mod==P.numeroDeUsuarios||mod==P.numeroDeUsuarios+1){
                         cls();
                         P.newUser(mod,P.numeroDeUsuarios);
+                        goto inicio;
                         
                     }
-                    if(mod==P.numeroDeUsuarios+1){
-                        cls();
-                        P.newUser(mod,P.numeroDeUsuarios);
-                        
-                    }
+                    
                     if(mod==P.numeroDeUsuarios+2){
-                       
                         P.mostrarClanes(tribus);
                     }
                     else{
-                    pUsuario = P.getUsuariopos(mod);
-                    opciones(pUsuario);
+                    pUser = P.getUsuariopos(mod);
+                    opciones(pUser);
                 }
                 
                 }

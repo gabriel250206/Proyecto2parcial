@@ -17,6 +17,8 @@ private:
     int id;
     int xp;
     string clan;
+protected:
+    string origen;
 public:
     string nombre;
     int edad;
@@ -43,6 +45,7 @@ public:
     int getXp();
     void increaseXp(int xp);
     void selectMision(Mision* pMision);
+    string clanOrg();
     
     
 
@@ -54,8 +57,8 @@ class UsuarioPremium: public Usuario{
     UsuarioPremium(string nombre);
     UsuarioPremium(string nombre, int edad);// marca no encontrado
     UsuarioPremium(string nombre, int edad, string nacionalidad);
-    vector <PublicacionPremium*> publicacionPremium;
-    void crearPublicacion();
+    // vector <PublicacionPremium*> publicacionPremium;
+    // void crearPublicacion();
     
 };
 

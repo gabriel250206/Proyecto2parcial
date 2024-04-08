@@ -12,3 +12,13 @@ void Clan::nuevoParticipante(Usuario* usuario){
 string Clan::getName(){
     return this->nombre;
 }
+void Clan::getParticipantes(){
+    system("cls");
+    for(int i=0;i<participantes.size();i++){
+        cout<<participantes[i]->nombre<<endl;
+    }
+    if(participantes.size()==0){
+        cout<<"no hay miembros";
+    }
+
+}

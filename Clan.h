@@ -13,7 +13,7 @@ class Clan{
     Clan(string nombre);
     void nuevoParticipante(Usuario* usuario);
     string getName();
-
+    void getParticipantes();
 
 };
 

@@ -174,7 +174,102 @@ void RedSocial:: newUser(int mod5,int numero){
 
 void RedSocial::mostrarClanes(vector<Clan*>clan){
     cls();
-    for(int i=0;i<4;i++){
-        cout<<"nacion del "<<clan[i]->getName()<<endl;
+    
+    int mod=0;
+    while(1){
+        cls();
+        cout<<"que clan quieres ver?"<<endl;
+        if(mod>4){
+            mod=0;
+        }
+        if(mod<0){
+            mod=4;
+        }
+        for(int i=0;i<4;i++){
+            if(mod==i){
+                cout<<">";
+            }
+            cout<<"nacion del "<<clan[i]->getName()<<endl;
+        }
+        if(mod==4)cout<<">";
+        cout<<"volver";
+        if(kbhit){
+            int k=getkey();
+            if(k==14){
+                mod--;
+            }
+            if(k==15){
+                mod++;
+            }
+            if(k==1){
+                if(mod<4){
+                    int modos=0;
+                    while(1){
+                        cls();
+                        clan[mod]->getParticipantes();
+                        cout<<endl<<"deseas agregar participantes?"<<endl;
+                        
+                        if(modos>1){
+                            modos==0;
+                        }
+                        if(modos<0){
+                            modos==1;
+                        }
+                        if(modos==0)
+                            cout<<">";
+                        cout<<" si"<<endl;
+                        if(modos==1)
+                            cout<<">";
+                        cout<<" nio"<<endl;
+
+                        if(kbhit){
+                            int k=getkey();
+                            if(k==14){
+                                modos--;
+                            }
+                            if(k==15){
+                                modos++;
+                            }
+                            if(k==1){
+                                if(modos==1)return;
+                                else{
+                                    cout<<endl<<"escribe su id"<<endl;
+                                    int idea;
+                                    cin>>idea;
+                                    
+                                    Usuario* pUsuario=this->getUsuario(idea);
+                                    if(pUsuario->clanOrg()=="lobo solitario"&& pUsuario->getClan()=="lobo solitario"){
+                                        pUsuario->setClan(clan[mod]->getName());
+                                        clan[mod]->nuevoParticipante(pUsuario);
+                                        
+                                    }
+                                    else{
+                                        if(pUsuario->clanOrg()!="avatar")cout<<"ya tienes un clan, rata traicionera"<<endl;
+                                        
+                                    }
+                                    if(pUsuario->clanOrg()=="avatar")
+                                    {
+                                        msleep(1000);
+                                        cout<<endl<<"el avatar puede estar en cualquier clan que desee, disfruta tu estancia"<<endl;
+                                        pUsuario->setClan(clan[mod]->getName());
+                                        clan[mod]->nuevoParticipante(pUsuario);
+                                    }
+                                    
+                                }
+                            }
+
+
+                        
+                        }
+                    }
+                    
+                    
+                }
+                if(mod==4){
+                    return;
+                }
+            }
+        }
+        
     }
 }
