@@ -47,7 +47,7 @@ void Usuario::mostrarAmigos(){
     }
 }
 
-void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<"xp: "<<endl;}
+void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicacioness.size();i++){
