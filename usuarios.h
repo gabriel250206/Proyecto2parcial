@@ -11,6 +11,7 @@ static int contId=1;
 class Publicacion;
 class PublicacionPremium; 
 class Mision;
+class RedSocial;
 
 class Usuario{
 private:
@@ -40,7 +41,7 @@ public:
     void mostrar();
     void mostrarPublicaciones();
     virtual void agregarAmigo(Usuario* nuevoAmigo);
-    virtual void crearPublicacion();
+    virtual void crearPublicacion(RedSocial* red);
     Usuario* getAmigo(int id);
     int getXp();
     void increaseXp(int xp);

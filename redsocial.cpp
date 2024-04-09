@@ -9,6 +9,13 @@ class Publicacion;
 class PublicacionPremium;
 class Usuario;
 class UsuarioPremium;
+
+int RedSocial::getNum(){
+    return this->usuarioss.size();
+}
+int RedSocial::getNumP(){
+    return this->publicacioness.size();
+}
 void RedSocial::agregarUsuario(Usuario* nuevo){
     usuarioss.push_back(nuevo);
     this->numeroDeUsuarios++;
@@ -26,7 +33,7 @@ void RedSocial::mostrarUsuarios(){
 
 void RedSocial::mostrarPublicaciones(){
     for(int i=0;i<publicacioness.size();i++){
-        for(int j=0;j<publicacioness[i].size();j++)cout<<publicacioness[i][i]<<endl;
+       publicacioness[i]->mostrarPublicacion();
     }
 }
 
@@ -42,7 +49,9 @@ Usuario* RedSocial:: getUsuariopos(int pos){
     return usuarioss[pos];
 }
 
-
+void RedSocial::nuevaP(Publicacion* nueva){
+    publicacioness.push_back(nueva);
+}
 RedSocial::RedSocial(std::string nombre){
     this->nombre=nombre;
 }
@@ -50,7 +59,7 @@ RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios){
     this->nombre=nombre;
     this->usuarioss=usuarios;
 }
-RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios,vector<vector<Publicacion*>>publicaciones){
+RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios,vector<Publicacion*>publicaciones){
     this->nombre=nombre;
     this->usuarioss=usuarios;
     this->publicacioness=publicaciones;

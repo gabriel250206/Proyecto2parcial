@@ -11,7 +11,74 @@ using namespace rlutil;
 RedSocial P{"Clans"};
 Usuario *pUsuario;
 
-void editar(){}
+void edus(Usuario* pUser){
+    string lll="+´+´´+", uio="'0989}+"  ; 
+    int edd=-1; 
+    p:
+    system("cls");
+    cout << " presione 1 para cambiar el nombre\n";
+    cout << " presione 2 para cambiar la edad\n";
+    cout << " presione 3 para cambiar la nacionaldad\n";
+    cout << " presione 4 para volver\n";
+    int h ; 
+    
+    cin>> h;
+    if(h == 1 ){
+         system("cls");
+        cout<< "Escriba el nombre ";
+        cin>>lll;
+        goto p;
+    }
+    if(h == 2 ){
+        system("cls");
+        cout<< "Escriba la edad ";
+        cin>>edd;
+        goto p;
+    }
+    if(h == 3 ){
+        system("cls");
+        cout<< "Escriba la nacionalidad ";
+        cin>>uio;
+        goto p;
+    }
+    if(h == 4 ){
+        if (lll != "+´+´´+"){
+            cout << "confirme el cambio de nombre de "<< pUser->nombre << " a "<< lll<<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> nombre = lll; 
+            } 
+            }
+        }
+         if (uio != "'0989}+"){
+            cout << "confirme el cambio de nacionalidad de "<< pUser->nacionalidad << " a "<< uio<<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> nacionalidad = uio; 
+            } 
+            }
+        }
+        if (edd > 0){
+            cout << "confirme el cambio de edad de "<< pUser->edad << " a "<< edd <<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> edad = edd; 
+            } 
+            }
+     
+        }return; 
+    }
+
+}
 void misiones(Usuario* pUser){
     int mod=0;
     Mision* pMision=nullptr;
@@ -94,7 +161,7 @@ void data(Usuario* pUser)
             if (k == 1)
             {
                 if (mod == 0)
-                    editar();
+                    edus(pUser);
                 if (mod == 1)
                     return;
             }
@@ -137,7 +204,7 @@ void publ(Usuario* pUser){
             }
             if(k==1){
                 if(mod==0){
-                    pUser->crearPublicacion();
+                    pUser->crearPublicacion(&P);
                 }
                 
                 return;
@@ -251,7 +318,15 @@ void opciones(Usuario* pUser)
 
 void Tittle()
 {
-    cout << "titulo : ) \n";
+cout<<"  _______           _______ _________ _______  _______ \n";
+cout<<" (  ___  )|\\     /|(  ___  )\\";cout<<"__   __/(  ___  )(  ____ )\n";
+cout<<" | (   ) || )   ( || (   ) |   ) (   | (   ) || (    )|\n";
+cout<<" | (___) || |   | || (___) |   | |   | (___) || (____)|\n";
+cout<<" |  ___  |( (   ) )|  ___  |   | |   |  ___  ||     __)\n";
+cout<<" | (   ) | \\ \\_/ / | (   ) |   | |   | (   ) || (\\ (   \n";
+cout<<" | )   ( |  \\   /  | )   ( |   | |   | )   ( || ) \\ \\__\n";
+cout<<" |/     \\|   \\_/   |/     \\|   )_(   |/     \\||/   \\__/\n";
+cout<<endl<<endl<<"la leyenda de pmp"<<endl;
     return;
 }
 bool menuk()
@@ -272,6 +347,11 @@ bool menuk()
         hidecursor();
         inicio:
         system("cls");
+        P.numeroDeUsuarios=P.getNum();
+        P.numeroDePublicaciones=P.getNumP();
+        // cout<<"Usuarios: "<<P.numeroDeUsuarios<<endl;
+        // cout<<"Publicaciones: "<<P.numeroDePublicaciones<<endl;
+        // P.mostrarPublicaciones();
         if (mod > P.numeroDeUsuarios+3)
             mod = 0;
         if (mod < 0)
@@ -313,7 +393,8 @@ bool menuk()
                     }
                     
                     if(mod==P.numeroDeUsuarios+2){
-                        P.mostrarClanes(tribus);
+                        P.mostrarPublicaciones();
+                        msleep(1000);
                     }
                     else{
                     pUser = P.getUsuariopos(mod);

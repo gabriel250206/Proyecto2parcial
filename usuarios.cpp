@@ -3,6 +3,7 @@
 #include <vector>
 #include "usuarios.h"
 #include "publicaciones.h"
+#include "RedSocial.h"
 using namespace rlutil;
 
 using namespace std;
@@ -100,12 +101,15 @@ void Usuario::increaseXp(int xp){
 //     nuevoAmigo->amigos[this->id]=this;
 // }
 
- void Usuario:: crearPublicacion(){
+ void Usuario:: crearPublicacion(RedSocial* red){
     Publicacion* nueva=new Publicacion();
     cout<<"escribe la fecha y el contenido"<<endl;
     cin>>nueva->fecha>>nueva->contenido;
     nueva->usuario=this;
     publicacioness.push_back(nueva);
+    red->nuevaP(nueva);
+    
+
 }
 
 
