@@ -2,6 +2,7 @@
 #include "publicaciones.h"
 #include "usuarios.h"
 #include "clan.h"
+#include "clan.h"
 #include <iostream>
 using namespace std;
 using namespace rlutil;
@@ -21,19 +22,75 @@ void RedSocial::agregarUsuario(Usuario* nuevo){
     this->numeroDeUsuarios++;
     
 }
-void RedSocial::eliminarUsuario(int pos){
+void RedSocial::eliminarUsuario(int pos, vector<Clan*>tribu){
+    if(usuarioss[pos]->getClan()!="lobo solitario"){
+        for(int i=0;i<4;i++){
+            if(usuarioss[pos]->getClan().compare(tribu[i]->getName())==0){
+                tribu[i]->quitaParticipante(usuarioss[pos]);
+                break;
+            }
+        }
+    }
     usuarioss.erase(usuarioss.begin()+pos);
     this->numeroDeUsuarios--;
     
+    
 }
 void RedSocial::mostrarUsuarios(){
-    for(int i=0;i<usuarioss.size();i++)
-        cout<<usuarioss[i]<<endl;
+   
+    int mod=0;
+    while(1){
+        cls();
+        if(mod<0){
+            mod=usuarioss.size()+1;
+        }
+        if(mod>usuarioss.size()+1){
+            mod=0;
+        }
+        
+        
+        for(int i=0;i<usuarioss.size();i++){
+            if(mod==i)std::cout<<">";
+            std::cout<<usuarioss[i]->nombre<<endl;
+        }
+        
+        if(mod==usuarioss.size())std::cout<<">";
+        std::cout<<"volver"<<endl;
+
+    
+        if(kbhit){
+            int k=getkey();
+            if(k==14) mod--;
+            if(k==15)mod++;
+            if(k==1){
+                if(mod==usuarioss.size())return;
+                else{
+                    Usuario* pUsuario=usuarioss[mod];
+                    this->opciones(pUsuario);
+                }
+            }
+        }
+    }
+    
+        
+
 }
 
 void RedSocial::mostrarPublicaciones(){
+    cls();
     for(int i=0;i<publicacioness.size();i++){
        publicacioness[i]->mostrarPublicacion();
+       std::cout<<endl;
+    }
+    if(publicacioness.size()==0)std::cout<<"Chale, no hay publicaciones"<<endl;
+    while(1){
+        
+        std::cout<<">volver"<<endl;
+        if(kbhit){
+            int k=getkey();
+            if(k==1)return;
+
+        }
     }
 }
 
@@ -65,20 +122,21 @@ RedSocial::RedSocial(string nombre,vector<Usuario*>usuarios,vector<Publicacion*>
     this->publicacioness=publicaciones;
 }
 
-void RedSocial:: newUser(int mod5,int numero){
-    cout<<"escribe su nombre"<<endl;
+void RedSocial:: newUser(int mod5){
+    std::cout<<"escribe su nombre"<<endl;
+    msleep(1000);
     string nombre;
     cin>>nombre;
     int amod=0;
     while(1){
         cls();
-        cout<<endl<<"tiene nacionalidad?"<<endl;
+        std::cout<<endl<<"tiene nacionalidad?"<<endl;
         if(amod==0){
-            cout<<">si"<<endl<<"no"<<endl;
+            std::cout<<">si"<<endl<<"no"<<endl;
         }
         if(amod==1){
             
-            cout<<"si"<<endl<<">no"<<endl;
+            std::cout<<"si"<<endl<<">no"<<endl;
         }
         if(kbhit){
             int k=getkey();
@@ -96,18 +154,18 @@ void RedSocial:: newUser(int mod5,int numero){
             }
             if(k==1){
                 if(amod==0){
-                    cout<<"escribe la edad"<<endl;
+                    std::cout<<"escribe la edad"<<endl;
                     int edad;
                     cin>>edad;
-                    cout<<"escribe la nacionalidad"<<endl;
+                    std::cout<<"escribe la nacionalidad"<<endl;
                     string nacionalidad;
                     cin>>nacionalidad;
-                    if(mod5==numero){
+                    if(mod5==0){
                         Usuario* pNuevo= new Usuario(nombre,edad,nacionalidad);
                         this->agregarUsuario(pNuevo);
                         return;
                     }
-                    if(mod5==numero+1){
+                    if(mod5==1){
                         UsuarioPremium* pNuevo= new UsuarioPremium(nombre,edad,nacionalidad);
                         this->agregarUsuario(pNuevo);
                         return;
@@ -120,13 +178,13 @@ void RedSocial:: newUser(int mod5,int numero){
                     while(1){
                         
                         cls();
-                        cout<<"tiene edad?"<<endl;
+                        std::cout<<"tiene edad?"<<endl;
                         if(mod2==0){
-                            cout<<">si"<<endl<<"no"<<endl;
+                            std::cout<<">si"<<endl<<"no"<<endl;
                         }
                         if(mod2==1){
             
-                             cout<<"si"<<endl<<">no"<<endl;
+                             std::cout<<"si"<<endl<<">no"<<endl;
                         }
                         if(kbhit){
                             int k=getkey();
@@ -145,27 +203,27 @@ void RedSocial:: newUser(int mod5,int numero){
                         if(k==1){
                             if(mod2==0){
                                 
-                                cout<<"escribe la edad"<<endl;
+                                std::cout<<"escribe la edad"<<endl;
                                 int edad;
                                 cin>>edad;
-                                if(mod5==numero){
+                                if(mod5==0){
                                     Usuario* pNuevo=new Usuario(nombre,edad);
                                     this->agregarUsuario(pNuevo);
                                     return;
                                 }
-                                if(mod5==numero+1){
+                                if(mod5==1){
                                     UsuarioPremium* pNuevo=new UsuarioPremium(nombre,edad);
                                     this->agregarUsuario(pNuevo);
                                     return;
                                 }
                             }
                             if(mod2==1){
-                                if(mod5==numero){
+                                if(mod5==0){
                                     Usuario* pNuevo=new Usuario(nombre);
                                     this->agregarUsuario(pNuevo);
                                     return;
                                 }
-                                if(mod5==numero+1){
+                                if(mod5==1){
                                     UsuarioPremium* pNuevo=new UsuarioPremium(nombre);
                                     this->agregarUsuario(pNuevo);
                                     return;
@@ -187,7 +245,7 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
     int mod=0;
     while(1){
         cls();
-        cout<<"que clan quieres ver?"<<endl;
+        std::cout<<"que clan quieres ver?"<<endl;
         if(mod>4){
             mod=0;
         }
@@ -196,12 +254,12 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
         }
         for(int i=0;i<4;i++){
             if(mod==i){
-                cout<<">";
+                std::cout<<">";
             }
-            cout<<"nacion del "<<clan[i]->getName()<<endl;
+            std::cout<<"nacion del "<<clan[i]->getName()<<endl;
         }
-        if(mod==4)cout<<">";
-        cout<<"volver";
+        if(mod==4)std::cout<<">";
+        std::cout<<"volver";
         if(kbhit){
             int k=getkey();
             if(k==14){
@@ -216,7 +274,7 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
                     while(1){
                         cls();
                         clan[mod]->getParticipantes();
-                        cout<<endl<<"deseas agregar participantes?"<<endl;
+                        std::cout<<endl<<"deseas agregar participantes?"<<endl;
                         
                         if(modos>1){
                             modos==0;
@@ -225,11 +283,11 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
                             modos==1;
                         }
                         if(modos==0)
-                            cout<<">";
-                        cout<<" si"<<endl;
+                            std::cout<<">";
+                        std::cout<<" si"<<endl;
                         if(modos==1)
-                            cout<<">";
-                        cout<<" nio"<<endl;
+                            std::cout<<">";
+                        std::cout<<" nio"<<endl;
 
                         if(kbhit){
                             int k=getkey();
@@ -242,26 +300,29 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
                             if(k==1){
                                 if(modos==1)return;
                                 else{
-                                    cout<<endl<<"escribe su id"<<endl;
+                                    std::cout<<endl<<"escribe su id"<<endl;
                                     int idea;
                                     cin>>idea;
                                     
                                     Usuario* pUsuario=this->getUsuario(idea);
-                                    if(pUsuario->clanOrg()=="lobo solitario"&& pUsuario->getClan()=="lobo solitario"){
+                                    if(pUsuario->getClan()=="lobo solitario"){
                                         pUsuario->setClan(clan[mod]->getName());
                                         clan[mod]->nuevoParticipante(pUsuario);
                                         
                                     }
                                     else{
-                                        if(pUsuario->clanOrg()!="avatar")cout<<"ya tienes un clan, rata traicionera"<<endl;
-                                        
+                                        if(pUsuario->clanOrg()!="avatar"){
+                                            std::cout<<endl<<"ya tiene un clan"<<endl;
+                                        }
+                                        msleep(1000);
                                     }
                                     if(pUsuario->clanOrg()=="avatar")
                                     {
-                                        msleep(1000);
-                                        cout<<endl<<"el avatar puede estar en cualquier clan que desee, disfruta tu estancia"<<endl;
+                                        
+                                        std::cout<<endl<<"el avatar puede estar en cualquier clan que desee, disfruta tu estancia"<<endl;
                                         pUsuario->setClan(clan[mod]->getName());
                                         clan[mod]->nuevoParticipante(pUsuario);
+                                        msleep(3000);
                                     }
                                     
                                 }
@@ -281,4 +342,329 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
         }
         
     }
+}
+
+void RedSocial::edus(Usuario* pUser){
+
+
+
+    string lll="+´+´´+", uio="'0989}+"  ; 
+    int edd=-1; 
+    p:
+    system("cls");
+    std::cout << " presione 1 para cambiar el nombre\n";
+    std::cout << " presione 2 para cambiar la edad\n";
+    std::cout << " presione 3 para cambiar la nacionaldad\n";
+    std::cout << " presione 4 para volver\n";
+    int h ; 
+    
+    cin>> h;
+    if(h == 1 ){
+         system("cls");
+        std::cout<< "Escriba el nombre ";
+        cin>>lll;
+        goto p;
+    }
+    if(h == 2 ){
+        system("cls");
+        std::cout<< "Escriba la edad ";
+        cin>>edd;
+        goto p;
+    }
+    if(h == 3 ){
+        system("cls");
+        std::cout<< "Escriba la nacionalidad ";
+        cin>>uio;
+        goto p;
+    }
+    if(h == 4 ){
+        if (lll != "+´+´´+"){
+            std::cout << "confirme el cambio de nombre de "<< pUser->nombre << " a "<< lll<<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> nombre = lll; 
+            } 
+            }
+        }
+         if (uio != "'0989}+"){
+            std::cout << "confirme el cambio de nacionalidad de "<< pUser->nacionalidad << " a "<< uio<<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> nacionalidad = uio; 
+            } 
+            }
+        }
+        if (edd > 0){
+            std::cout << "confirme el cambio de edad de "<< pUser->edad << " a "<< edd <<endl;
+            if (kbhit)
+            {
+                int k = getkey();
+                if (k == 1)
+            {
+                pUser-> edad = edd; 
+            } 
+            }
+     
+        }return; 
+    }
+
+}
+
+void RedSocial::ami(Usuario *pUser){
+    system("cls");
+    int mod=0;
+    while(1){
+        cls();
+        
+        if(mod>pUser->amigos.size()+1){
+            mod==0;
+        }
+        if(mod<0){
+            mod==pUser->amigos.size()+1;
+        }
+        for(int i=0;i<pUser->amigos.size();i++){
+            if(mod==i)std::cout<<">";
+            std::cout<<pUser->amigos[i]->nombre<<endl;
+        }
+      
+        if(mod==pUser->amigos.size()){
+            cout<<">";
+        }
+        std::cout<<"agregar amigo"<<endl;
+        if(mod==pUser->amigos.size()+1){
+            std::cout<<">";
+        }
+        std::cout<<"volver"<<endl;
+        if(kbhit){
+            int k=getkey();
+            
+            if(k==14){
+                mod--;
+                
+            }
+            if(k==15){
+                mod++;
+                
+            }
+            if(k==1){
+                if(mod<pUser->amigos.size()){
+                    Usuario* amix=pUser->amigos[mod];
+                    opciones(amix);
+                }
+                if(mod==pUser->amigos.size()){
+                    std::cout<<"escribe su id"<<endl;
+                    int id;
+                    cin>>id;
+                    Usuario* nuevoUser=this->getUsuario(id);
+                    pUser->agregarAmigo(nuevoUser);
+                }
+                
+                return;
+            }
+        }
+            
+            
+    }
+
+        
+}
+
+
+void RedSocial::publ(Usuario* pUser){
+    system("cls");
+    int mod=0;
+    while(1){
+        
+        cls();
+        pUser->mostrarPublicaciones();
+        
+        if(mod==0){
+            cout<<">crear publicacion"<<endl;
+            cout<<"volver"<<endl;
+        }
+        if(mod==1){
+            cout<<"crear publicacion"<<endl;
+            cout<<">volver"<<endl;
+        }
+        if(kbhit){
+            int k=getkey();
+            
+            if(k==14){
+                mod--;
+                if(mod<0){
+                mod=1;
+        }
+            }
+            if(k==15){
+                mod++;
+                if(mod>1){
+                mod=0;
+                }
+            }
+            if(k==1){
+                if(mod==0){
+                    pUser->crearPublicacion(this);
+                }
+                
+                return;
+            }
+        }
+
+        
+    }
+
+}
+
+
+void RedSocial::misiones(Usuario* pUser){
+    int mod=0;
+    Mision* pMision=nullptr;
+    while(1){
+        cls();
+        if(mod>3){
+            mod=0;
+        }
+        if(mod<0){
+            mod=3;
+        }
+        if(mod==0){
+            cout<<">";
+        }
+        cout<<"mision de amigo"<<endl;
+        if(mod==1){
+            cout<<">";
+        }
+        cout<<"mision de publicacion"<<endl;
+        if(mod==2)
+            cout<<">";
+        cout<<"salir"<<endl;
+        if(kbhit){
+            int k=getkey();
+            if(k==14){
+                mod--;
+            }
+            if(k==15){
+                mod++;
+            }
+            if(k==1){
+                if(mod==0){
+                    cout<<"funciona";
+                    pMision= new MisionAmigos();
+                    cout<<"funciona";
+                    pUser->selectMision(pMision);
+                    cout<<"funciona";
+                    return;
+                }
+                if(mod==1){
+                    cout<<"funciona";
+                    pMision= new MisionPublicacion();
+                    cout<<"funciona";
+                    pUser->selectMision(pMision);
+                    cout<<"funciona";
+                    return;
+                }
+                if(mod==2){
+                    return;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+void RedSocial::opciones(Usuario* pUser)
+{
+    int mod = 0;
+    while (1)
+    {
+        system("cls");
+        if (mod > 3)
+            mod = 0;
+        if (mod < 0)
+            mod = 3;
+        if (mod == 0)
+            cout << ">";
+        cout << "datos\n";
+        if (mod == 1)
+            cout << ">";
+        cout << "publicaciones\n";
+        if (mod == 2)
+            cout << ">";
+        cout << "amigos\n";
+        if (mod == 3)
+            cout << ">";
+        cout << "volver\n";
+        
+        
+        if (kbhit)
+        {
+            int k = getkey();
+            if (k == 14)
+                mod--;
+            if (k == 15)
+                mod++;
+            if (k == 1)
+            {
+                if (mod == 0)
+                    this->data(pUser);
+                if (mod == 1)
+                    
+                    this->publ(pUser);
+                if (mod == 2)
+                    this->ami(pUser);
+                if (mod==3)
+                    return;
+                
+            }
+        }
+    }
+}
+
+
+
+void RedSocial::data(Usuario* pUser)
+{
+    
+    int mod = 0;
+    while (1)
+    {
+        system("cls");
+        pUser->mostrar();
+        if (mod > 1)
+            mod = 0;
+        if (mod < 0)
+            mod = 1;
+        if (mod == 0)
+            cout << ">";
+        cout << "editar\n";
+        if (mod == 1)
+            cout << ">";
+        cout << "volver\n";
+        if (kbhit)
+        {
+            int k = getkey();
+            if (k == 14)
+                mod--;
+            if (k == 15)
+                mod++;
+            if (k == 1)
+            {
+                if (mod == 0)
+                    edus(pUser);
+                if (mod == 1)
+                    return;
+            }
+        }
+    }
+
+
+
 }

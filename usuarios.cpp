@@ -41,6 +41,12 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
 
 int Usuario:: getId(){return this->id;};
 
+void Usuario::mostrarAmigos(){
+    for(int i=0;i<amigos.size();i++){
+        cout<<amigos[i]<<endl;
+    }
+}
+
 void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<"xp: "<<this->xp<<endl<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
@@ -139,16 +145,16 @@ string Usuario::clanOrg(){
 
 UsuarioPremium::UsuarioPremium(string nombre):Usuario(nombre){
     setClan("Avatar");
-    this->origen="lobo solitario";
+    this->origen="avatar";
 }
 UsuarioPremium::UsuarioPremium(string nombre,int edad):Usuario(nombre,edad){
     setClan("Avatar");
-    this->origen="lobo solitario";
+    this->origen="avatar";
 }
 
 UsuarioPremium::UsuarioPremium(string nombre, int edad, string nacionalidad):Usuario(nombre,edad,nacionalidad){
     setClan("Avatar");
-    this->origen="lobo solitario";
+    this->origen="avatar";
     
 }
 

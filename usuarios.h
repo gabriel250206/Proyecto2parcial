@@ -40,6 +40,7 @@ public:
     void setClan(string clan);
     void mostrar();
     void mostrarPublicaciones();
+    void mostrarAmigos();
     virtual void agregarAmigo(Usuario* nuevoAmigo);
     virtual void crearPublicacion(RedSocial* red);
     Usuario* getAmigo(int id);
@@ -56,7 +57,7 @@ public:
 class UsuarioPremium: public Usuario{
     public:
     UsuarioPremium(string nombre);
-    UsuarioPremium(string nombre, int edad);// marca no encontrado
+    UsuarioPremium(string nombre, int edad);
     UsuarioPremium(string nombre, int edad, string nacionalidad);
     // vector <PublicacionPremium*> publicacionPremium;
     // void crearPublicacion();

@@ -1,6 +1,7 @@
 #include "Clan.h"
 #include "usuarios.h"
-
+#include "rlutil.h"
+using namespace rlutil;
 Clan::Clan(string nombre){
     this->nombre=nombre;
 }
@@ -21,4 +22,17 @@ void Clan::getParticipantes(){
         cout<<"no hay miembros";
     }
 
+}
+void Clan::quitaParticipante(Usuario* pUsuario){
+   
+    for(int i=0;i<this->participantes.size();i++){
+        
+        if(participantes[i]->nombre==pUsuario->nombre){
+            
+            this->participantes.erase(participantes.begin()+i);
+            
+        }
+    }
+    
+    
 }
