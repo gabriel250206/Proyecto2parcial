@@ -478,8 +478,31 @@ void RedSocial::ami(Usuario *pUser){
                     std::cout<<"escribe su id"<<endl;
                     int id;
                     cin>>id;
-                    Usuario* nuevoUser=this->getUsuario(id);
-                    pUser->agregarAmigo(nuevoUser);
+                    bool existe=false;
+                        for(int i=0;i<this->getNum();i++){
+
+                            if(pUser->getId()!=id && this->usuarioss[i]->getId()==id){
+                                existe=true;
+                            }
+                        }
+
+                        if(existe==true){
+                            Usuario* nuevoUser=this->getUsuario(id);
+                        pUser->agregarAmigo(nuevoUser);
+                        }else{
+                            if(pUser->getId()==id){
+                                cout<<"mi nombre es john alejando y soy esquizofrenico"<<endl;
+                                msleep(3000);
+                                return;
+
+                            }else{
+                                cout<<"no existe ese usuario"<<endl;
+                                msleep(3000);
+                                return;
+                            }
+                            
+                        }
+                    
                 }
                 
                 return;
