@@ -303,8 +303,17 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
                                     std::cout<<endl<<"escribe su id"<<endl;
                                     int idea;
                                     cin>>idea;
-                                    
-                                    Usuario* pUsuario=this->getUsuario(idea);
+
+
+                                    bool existe=false;
+                                    for(int i=0;i<this->getNum();i++){
+                                        if(this->getUsuariopos(i)->getId()==idea){
+                                        existe=true;
+                                        }
+                                    }
+
+                                    if(existe==true){
+                                        Usuario* pUsuario=this->getUsuario(idea);
                                     if(pUsuario->getClan()=="lobo solitario"){
                                         pUsuario->setClan(clan[mod]->getName());
                                         clan[mod]->nuevoParticipante(pUsuario);
@@ -324,6 +333,14 @@ void RedSocial::mostrarClanes(vector<Clan*>clan){
                                         clan[mod]->nuevoParticipante(pUsuario);
                                         msleep(3000);
                                     }
+                                    }else{
+                                        cout<<"no existe ese usuario"<<endl;
+                                        msleep(3000);
+                                        return;
+                                    }
+
+                                    
+                                    
                                     
                                 }
                             }
@@ -522,60 +539,60 @@ void RedSocial::publ(Usuario* pUser){
 }
 
 
-void RedSocial::misiones(Usuario* pUser){
-    int mod=0;
-    Mision* pMision=nullptr;
-    while(1){
-        cls();
-        if(mod>3){
-            mod=0;
-        }
-        if(mod<0){
-            mod=3;
-        }
-        if(mod==0){
-            cout<<">";
-        }
-        cout<<"mision de amigo"<<endl;
-        if(mod==1){
-            cout<<">";
-        }
-        cout<<"mision de publicacion"<<endl;
-        if(mod==2)
-            cout<<">";
-        cout<<"salir"<<endl;
-        if(kbhit){
-            int k=getkey();
-            if(k==14){
-                mod--;
-            }
-            if(k==15){
-                mod++;
-            }
-            if(k==1){
-                if(mod==0){
-                    cout<<"funciona";
-                    pMision= new MisionAmigos();
-                    cout<<"funciona";
-                    pUser->selectMision(pMision);
-                    cout<<"funciona";
-                    return;
-                }
-                if(mod==1){
-                    cout<<"funciona";
-                    pMision= new MisionPublicacion();
-                    cout<<"funciona";
-                    pUser->selectMision(pMision);
-                    cout<<"funciona";
-                    return;
-                }
-                if(mod==2){
-                    return;
-                }
-            }
-        }
-    }
-}
+// void RedSocial::misiones(Usuario* pUser){
+//     int mod=0;
+//     Mision* pMision=nullptr;
+//     while(1){
+//         cls();
+//         if(mod>3){
+//             mod=0;
+//         }
+//         if(mod<0){
+//             mod=3;
+//         }
+//         if(mod==0){
+//             cout<<">";
+//         }
+//         cout<<"mision de amigo"<<endl;
+//         if(mod==1){
+//             cout<<">";
+//         }
+//         cout<<"mision de publicacion"<<endl;
+//         if(mod==2)
+//             cout<<">";
+//         cout<<"salir"<<endl;
+//         if(kbhit){
+//             int k=getkey();
+//             if(k==14){
+//                 mod--;
+//             }
+//             if(k==15){
+//                 mod++;
+//             }
+//             if(k==1){
+//                 if(mod==0){
+//                     cout<<"funciona";
+//                     pMision= new MisionAmigos();
+//                     cout<<"funciona";
+//                     pUser->selectMision(pMision);
+//                     cout<<"funciona";
+//                     return;
+//                 }
+//                 if(mod==1){
+//                     cout<<"funciona";
+//                     pMision= new MisionPublicacion();
+//                     cout<<"funciona";
+//                     pUser->selectMision(pMision);
+//                     cout<<"funciona";
+//                     return;
+//                 }
+//                 if(mod==2){
+//                     return;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 

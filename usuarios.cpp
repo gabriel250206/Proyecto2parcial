@@ -15,7 +15,7 @@ Usuario::Usuario(string nombre){
     this-> nacionalidad="wakanda";
     this->clan="lobo solitario";
     this->id=contId++;
-    this->xp=0;
+    //this->xp=0;
     this->origen="lobo solitario";
 }
 Usuario::Usuario(string nombre,int edad){
@@ -24,7 +24,7 @@ Usuario::Usuario(string nombre,int edad){
     this-> nacionalidad="wakanda";
     this->clan="lobo solitario";
     this->id=contId++;
-    this->xp=0;
+    //this->xp=0;
     this->origen="lobo solitario";
 }
 
@@ -34,7 +34,7 @@ Usuario::Usuario(string nombre, int edad, string nacionalidad){
     this-> nacionalidad=nacionalidad;
     this->clan="lobo solitario";
     this->id=contId++;
-    this->xp=0;
+    //this->xp=0;
     this->origen="lobo solitario";
     
 }
@@ -47,7 +47,7 @@ void Usuario::mostrarAmigos(){
     }
 }
 
-void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<"xp: "<<this->xp<<endl<<endl;}
+void Usuario:: mostrar(){cout<<"Su tribu es es: "<<this->clan<<endl<<"nombre: "<<this->nombre<<endl<<"edad: "<<this->edad<<endl<<"nacionalidad: "<<this->nacionalidad<<endl<<"id: "<<this->id<<endl<<"xp: "<<endl;}
 
 void Usuario:: mostrarPublicaciones(){
     for(int i=0;i<this->publicacioness.size();i++){
@@ -60,28 +60,28 @@ void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
     amigos.push_back(nuevoAmigo);
     nuevoAmigo->amigos.push_back(this);
     cout<<"agrega"<<endl;
-    if(this->mision!=nullptr){
-        if(this->mision->tipo=="amigos"){
-            cout<<"entra"<<endl;
-        this->mision->avanzaProgreso();
-            cout<<"puso"<<endl;
-        if(this->mision->getProgreso()==this->mision->getProgresoTotal()){
-            this->mision=nullptr;
-            this->mision->completada(this);
-        }
-    }
-    }
-    if(nuevoAmigo->mision!=nullptr){
-        if(nuevoAmigo->mision->tipo=="amigos"){
-            cout<<"entra"<<endl;
-        this->mision->avanzaProgreso();
-            cout<<"puso"<<endl;
-        if(nuevoAmigo->mision->getProgreso()==nuevoAmigo->mision->getProgresoTotal()){
-            nuevoAmigo->mision=nullptr;
-            nuevoAmigo->mision->completada(nuevoAmigo);
-        }
-    }
-    }
+    // if(this->mision!=nullptr){
+    //     if(this->mision->tipo=="amigos"){
+    //         cout<<"entra"<<endl;
+    //     this->mision->avanzaProgreso();
+    //         cout<<"puso"<<endl;
+    //     if(this->mision->getProgreso()==this->mision->getProgresoTotal()){
+    //         this->mision=nullptr;
+    //         this->mision->completada(this);
+    //     }
+    // }
+    // }
+    // if(nuevoAmigo->mision!=nullptr){
+    //     if(nuevoAmigo->mision->tipo=="amigos"){
+    //         cout<<"entra"<<endl;
+    //     this->mision->avanzaProgreso();
+    //         cout<<"puso"<<endl;
+    //     if(nuevoAmigo->mision->getProgreso()==nuevoAmigo->mision->getProgresoTotal()){
+    //         nuevoAmigo->mision=nullptr;
+    //         nuevoAmigo->mision->completada(nuevoAmigo);
+    //     }
+    // }
+    // }
     
     
 }
@@ -96,11 +96,11 @@ Usuario* Usuario::getAmigo(int id){
 }
 
 
-int Usuario::getXp(){return this->xp;}
+//int Usuario::getXp(){return this->xp;}
 
-void Usuario::increaseXp(int xp){
-    this->xp=this->xp+xp;
-}
+// void Usuario::increaseXp(int xp){
+//     this->xp=this->xp+xp;
+// }
 
 // void Usuario:: agregarAmigo(Usuario* nuevoAmigo){
 //     amigos[nuevoAmigo->id] =nuevoAmigo;
@@ -125,9 +125,9 @@ string Usuario::getClan(){return this->clan;}
          this->clan=clan;
 }
 
-void Usuario::selectMision(Mision* pMision){
-    this->mision=pMision;
-}
+// void Usuario::selectMision(Mision* pMision){
+//     this->mision=pMision;
+// }
 
 string Usuario::clanOrg(){
     return this->origen;

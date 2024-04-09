@@ -107,7 +107,14 @@ bool menuk()
                         cout<<"introduce su id"<<endl;
                         int idea;
                         cin>>idea;
-                        if(idea>0&&idea<P.getNum()){
+                        bool existe=false;
+                        for(int i=0;i<P.getNum();i++){
+                            if(P.getUsuariopos(i)->getId()==idea){
+                                existe=true;
+                            }
+                        }
+
+                        if(existe==true){
                             P.eliminarUsuario(idea-1,tribus);
                         }else{
                             cout<<"no existe ese usuario"<<endl;

@@ -16,7 +16,7 @@ class RedSocial;
 class Usuario{
 private:
     int id;
-    int xp;
+    //int xp;
     string clan;
 protected:
     string origen;
@@ -27,7 +27,7 @@ public:
     vector<Usuario*> amigos;
     //map<id, usuario*> amigos;
     vector<Publicacion*> publicacioness;
-    Mision* mision=nullptr;
+    //Mision* mision=nullptr;
 
 
     Usuario(string nombre);
@@ -44,9 +44,9 @@ public:
     virtual void agregarAmigo(Usuario* nuevoAmigo);
     virtual void crearPublicacion(RedSocial* red);
     Usuario* getAmigo(int id);
-    int getXp();
-    void increaseXp(int xp);
-    void selectMision(Mision* pMision);
+    //int getXp();
+    //void increaseXp(int xp);
+    //void selectMision(Mision* pMision);
     string clanOrg();
     
     

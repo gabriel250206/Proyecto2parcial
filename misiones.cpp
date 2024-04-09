@@ -1,13 +1,13 @@
-#include "misiones.h"
-#include "usuarios.h"
-Mision::Mision(){
-    this->nombre="Mision sin nombre";
-    this->valor=50;
-    this->complete=false;
-    this->progreso=0;
-    this->progresoTotal=3;
-    this->tipo="sin tipo";
-}
+// #include "misiones.h"
+// #include "usuarios.h"
+// Mision::Mision(){
+//     this->nombre="Mision sin nombre";
+//     this->valor=50;
+//     this->complete=false;
+//     this->progreso=0;
+//     this->progresoTotal=3;
+//     this->tipo="sin tipo";
+// }
 // Mision::Mision(string nombre){
 //     this->nombre=nombre;
 //     this->valor=50;
@@ -23,37 +23,37 @@ Mision::Mision(){
 //     this->progresoTotal=3;
 // }
 
-void Mision::completada(Usuario* usuario){
+// void Mision::completada(Usuario* usuario){
     
-    usuario->increaseXp(this->valor);
+//     usuario->increaseXp(this->valor);
 
-}
-void Mision::avanzaProgreso(){
-    this->progreso++;
-}
+// }
+// void Mision::avanzaProgreso(){
+//     this->progreso++;
+// }
 
-void Mision::mostrarProgreso(){
+// void Mision::mostrarProgreso(){
 
-    cout<<this->nombre<<endl<<"Progreso: "<<this->progreso<<"/"<<this->progresoTotal;
-}
+//     cout<<this->nombre<<endl<<"Progreso: "<<this->progreso<<"/"<<this->progresoTotal;
+// }
 
-int Mision::getProgreso(){
-    return this->progreso;
-}
-int Mision::getProgresoTotal(){
-    return this->progresoTotal;
-}
+// int Mision::getProgreso(){
+//     return this->progreso;
+// }
+// int Mision::getProgresoTotal(){
+//     return this->progresoTotal;
+// }
 
-MisionAmigos::MisionAmigos():Mision(){
-    nombre="Agrega a 3 amigos";
-    tipo="Amigos";
+// MisionAmigos::MisionAmigos():Mision(){
+//     nombre="Agrega a 3 amigos";
+//     tipo="Amigos";
 
-}
+// }
 
-MisionPublicacion::MisionPublicacion():Mision(){
-    nombre="Haz una publicacion";
-    tipo="publicacion";
-    valor=100;
-    progresoTotal=1;
+// MisionPublicacion::MisionPublicacion():Mision(){
+//     nombre="Haz una publicacion";
+//     tipo="publicacion";
+//     valor=100;
+//     progresoTotal=1;
 
-}
+// }
